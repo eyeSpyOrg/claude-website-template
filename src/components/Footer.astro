@@ -1,0 +1,70 @@
+---
+/**
+ * Universal Footer — contentinfo landmark, org identity (NAP
+ * consistency for local SEO), secondary nav, social links.
+ * All content driven by src/config/site.js.
+ */
+import { SITE } from '../config/site.js';
+const year = new Date().getFullYear();
+// Non-breaking hyphens so the phone number never wraps mid-line
+const telDisplay = SITE.telephone.replaceAll('-', '\u2011');
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <p class="site-footer__brand">{SITE.name}</p>
+      <address>
+        {SITE.address.streetAddress}<br />
+        {SITE.address.addressLocality}, {SITE.address.addressRegion} {SITE.address.postalCode}<br />
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />
+        <a href={`tel:${SITE.telephone.replaceAll('-', '')}`}>{telDisplay}</a>
+      </address>
+    </div>
+
+    <nav aria-label="Footer">
+      <ul>
+        {SITE.footerNav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    {SITE.socials.length > 0 && (
+      <nav aria-label="Social media">
+        <ul>
+          {SITE.socials.map((s) => (
+            <li><a href={s.url} rel="me noopener">{s.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
+  </div>
+  <p class="site-footer__legal">© {year} {SITE.legalName}. All rights reserved.</p>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-surface);
+    border-top: 2px solid var(--color-border);
+    margin-top: 4rem;
+    padding: 2.5rem 1rem 1.5rem;
+  }
+  .site-footer__inner {
+    max-width: 72rem;
+    margin-inline: auto;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+  .site-footer__brand { font-weight: 800; font-size: 1.1rem; margin: 0 0 0.5rem; }
+  .site-footer address { font-style: normal; line-height: 1.8; color: var(--color-text-muted); }
+  .site-footer nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.25rem; }
+  .site-footer a { color: var(--color-text); display: inline-flex; align-items: center; min-height: 44px; }
+  .site-footer__legal {
+    max-width: 72rem;
+    margin: 2rem auto 0;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+</style>

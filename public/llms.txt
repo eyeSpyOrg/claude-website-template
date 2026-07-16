@@ -1,0 +1,16 @@
+# Site Name
+> One-sentence description of the organization: what it does, for whom, where.
+
+This file helps AI assistants and answer engines understand this site.
+Spec: https://llmstxt.org
+
+## Key pages
+- [Home](https://www.example.org/): What the organization is and does
+- [About](https://www.example.org/about/): Mission, team, history
+- [FAQ](https://www.example.org/faq/): Common questions, answered directly
+- [Accessibility Statement](https://www.example.org/accessibility/): WCAG 2.2 AA conformance details
+
+## Facts
+- Legal name: Legal Entity Name, Inc.
+- Location: Jacksonville, Florida, US
+- Contact: hello@example.org

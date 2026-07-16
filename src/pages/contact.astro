@@ -1,0 +1,51 @@
+---
+/**
+ * Contact page template. NAP (name/address/phone) renders ONLY from
+ * site.js so it can never drift from the footer or Organization schema.
+ * For a contact form, use HubSpotForm.astro (see INTEGRATIONS.md §2) —
+ * never embed the HubSpot widget.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../config/site.js';
+
+// Visible phone number uses non-breaking hyphens (U+2011) so it never
+// wraps mid-number; the tel: href keeps plain hyphens.
+const telDisplay = SITE.telephone.replaceAll('-', '‑');
+---
+
+<BaseLayout
+  title="Contact"
+  description="Replace: 145–160 character description naming the organization, the fastest way to reach it, and expected response time."
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[{ name: 'Home', href: '/' }, { name: 'Contact', href: '/contact/' }]}
+    />
+    <h1>Contact {SITE.name}</h1>
+    <div class="prose">
+      <p>
+        Replace: one sentence stating the best way to reach us and how quickly we
+        respond. Answer-first, so this is what answer engines quote.
+      </p>
+
+      <h2>How can you reach us?</h2>
+      <ul>
+        <li>Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+        <li>Phone: <a href={`tel:${SITE.telephone}`}>{telDisplay}</a></li>
+      </ul>
+
+      <h2>Where are we located?</h2>
+      <p>
+        {SITE.address.streetAddress}, {SITE.address.addressLocality},
+        {SITE.address.addressRegion} {SITE.address.postalCode}
+      </p>
+
+      <!--
+        Contact form: once the site's HubSpot form exists, add
+          import HubSpotForm from '../components/HubSpotForm.astro';
+        and render <HubSpotForm formGuid="..." /> here. See INTEGRATIONS.md §2.
+      -->
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,18 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "runners": ["axe", "htmlcs"],
+    "timeout": 30000,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+    }
+  },
+  "urls": [
+    "http://localhost:4321/",
+    "http://localhost:4321/about/",
+    "http://localhost:4321/accessibility/",
+    "http://localhost:4321/privacy/",
+    "http://localhost:4321/contact/",
+    "http://localhost:4321/404.html"
+  ]
+}

@@ -1,0 +1,138 @@
+---
+/**
+ * Universal Header — semantic landmark, keyboard-first nav,
+ * accessible mobile disclosure menu (WAI-ARIA APG pattern),
+ * aria-current on the active page.
+ * Nav items come from src/config/site.js.
+ */
+import { SITE } from '../config/site.js';
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="site-header__brand">
+      <!-- Swap for <img src={SITE.logo} alt={SITE.name}> per project -->
+      <span>{SITE.name}</span>
+    </a>
+
+    <button
+      type="button"
+      class="site-header__menu-btn"
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      data-menu-toggle
+    >
+      <span aria-hidden="true" data-menu-icon>☰</span>
+      Menu
+    </button>
+
+    <nav id="primary-nav" class="site-header__nav" aria-label="Primary" data-menu>
+      <ul>
+        {SITE.nav.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--color-bg);
+    border-bottom: 2px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-header__inner {
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .site-header__brand {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .site-header__menu-btn {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.5rem 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .site-header__nav ul {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  .site-header__nav a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.9rem;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+  .site-header__nav a:hover { background: var(--color-surface); }
+  /* Active page: bold + underline + aria-current (not color alone) */
+  .site-header__nav a[aria-current='page'] {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    text-decoration-thickness: 2px;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 47.9rem) {
+    .site-header__menu-btn { display: inline-flex; }
+    .site-header__nav { display: none; width: 100%; }
+    .site-header__nav.is-open { display: block; }
+    .site-header__nav ul { flex-direction: column; }
+    .site-header__nav a { width: 100%; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const nav = document.querySelector<HTMLElement>('[data-menu]');
+  if (btn && nav) {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      nav.classList.toggle('is-open', !open);
+    });
+    // Close on Escape, return focus to button
+    nav.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+  }
+</script>

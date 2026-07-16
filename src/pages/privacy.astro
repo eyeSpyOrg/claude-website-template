@@ -1,0 +1,51 @@
+---
+/**
+ * Privacy Policy template. REPLACE the placeholder copy per site —
+ * a privacy policy must describe what the site actually does
+ * (analytics, forms, payments). Not legal advice; have counsel review.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../config/site.js';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Replace: 145–160 character description stating what data this site collects, how it is used, and the choices visitors have."
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[{ name: 'Home', href: '/' }, { name: 'Privacy Policy', href: '/privacy/' }]}
+    />
+    <h1>Privacy Policy</h1>
+    <div class="prose">
+      <p>
+        Replace: one direct sentence stating what data {SITE.name} collects and why.
+        Answer engines quote this paragraph, so lead with the summary.
+      </p>
+
+      <h2>What information do we collect?</h2>
+      <p>
+        Replace: list the actual collection points on this site — contact form fields,
+        analytics (only after consent via the cookie banner), donation processing
+        (handled by Stripe on Stripe's servers), and email correspondence.
+      </p>
+
+      <h2>How do we use cookies and analytics?</h2>
+      <p>
+        Replace: analytics and marketing scripts load only after a visitor accepts the
+        consent banner. Declining loads zero third-party scripts. Visitors can change
+        their choice anytime via the "Privacy choices" link in the footer.
+      </p>
+
+      <h2>How can you contact us about privacy?</h2>
+      <p>
+        Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with any privacy
+        question or request (access, correction, deletion). We aim to respond within
+        two business days.
+      </p>
+
+      <p><em>Last updated: replace with the launch date, and update on every change.</em></p>
+    </div>
+  </div>
+</BaseLayout>
