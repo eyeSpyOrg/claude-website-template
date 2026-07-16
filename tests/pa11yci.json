@@ -10,6 +10,7 @@
   "urls": [
     "http://localhost:4321/",
     "http://localhost:4321/about/",
+    "http://localhost:4321/faq/",
     "http://localhost:4321/accessibility/",
     "http://localhost:4321/privacy/",
     "http://localhost:4321/contact/",
