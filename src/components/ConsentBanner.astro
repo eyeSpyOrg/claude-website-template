@@ -13,9 +13,8 @@ const enabled = Boolean(SITE.integrations?.ga4Id || SITE.integrations?.hubspotPo
 ---
 
 {enabled && (
-  <div
+  <section
     class="consent"
-    role="region"
     aria-label="Cookie consent"
     data-consent-banner
     hidden
@@ -32,7 +31,7 @@ const enabled = Boolean(SITE.integrations?.ga4Id || SITE.integrations?.hubspotPo
         Decline
       </button>
     </div>
-  </div>
+  </section>
 )}
 
 <style>

@@ -1,43 +1,67 @@
 ---
 /**
- * FAQ page template. Answers must be self-contained (make sense out of
- * context) — answer engines quote them directly. The FAQ component
- * generates the visible accordion AND FAQPage schema from the same array.
+ * FAQ — all eight questions from PAGE_COPY.md. The FAQ component
+ * generates the visible accordion AND FAQPage schema from one array.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import FAQ from '../components/FAQ.astro';
-import { SITE } from '../config/site.js';
 
 const faqs = [
   {
-    question: `What does ${SITE.name} do?`,
+    question: 'What is The Fashion PAWty?',
     answer:
-      'Replace with a direct, self-contained 1–3 sentence answer. Lead with the definition — answer engines quote the first sentence.',
+      'It’s a doggie fashion show and community celebration — "A Navigation Celebration" — hosted by the Eye Spy Foundation. Dogs strut the orange carpet while the community enjoys mocktails, food, games, and music, all to support the blind and low vision community and Leader Dogs for the Blind.',
   },
   {
-    question: 'How can I get involved?',
+    question: 'When and where is it?',
     answer:
-      'Replace with a concrete answer naming the actual ways to participate (volunteer, donate, subscribe) and where to start.',
+      'Saturday, September 26, 2026, from 4 to 7 PM at Happy Brew, 3200 Hendricks Ave, Jacksonville, FL 32207.',
   },
   {
-    question: 'How do I contact you?',
-    answer: `Replace with the fastest contact route and response time, e.g. email ${SITE.email} — we respond within two business days.`,
+    question: "How much are tickets and what's included?",
+    answer: 'Tickets are $30 and include entry to the show, food, and mocktails.',
+  },
+  {
+    question: 'Who does the event benefit?',
+    answer:
+      'The Eye Spy Foundation and Leader Dogs for the Blind. Eye Spy is also sponsoring one Leader Dogs puppy this year.',
+  },
+  {
+    question: 'Can I bring my dog?',
+    answer:
+      "This year's fashion show features a curated lineup of dogs, so you don't need to bring your own — come enjoy the show, the mocktails, and the fun. It's a people-first celebration.",
+  },
+  {
+    question: 'How do the dogs get in the fashion show?',
+    answer:
+      "The runway lineup is organized by our team for this year's event. Want to be part of a future PAWty? Email team@eyespy.org and say hello.",
+  },
+  {
+    question: 'Is the event accessible?',
+    answer:
+      'Yes — the entire venue is accessible, and accessibility is at the heart of everything we do. Park in the church lot next door on Hendricks Avenue (overflow behind the church). Questions about your visit? Email team@eyespy.org and we’ll help.',
+  },
+  {
+    question: 'How can I sponsor or get involved?',
+    answer:
+      'Head to our Sponsors page to claim a named party area, or email team@eyespy.org. You can also grab merch at shop.thefashionpawty.com — every bit supports the cause.',
   },
 ];
 ---
 
 <BaseLayout
   title="FAQ"
-  description="Replace: 145–160 character description promising direct answers to the most common questions about the organization."
+  description="Fashion PAWty FAQ: tickets are $30 with food and mocktails included, Sep 26 at Happy Brew, Jacksonville — plus answers on parking, accessibility, dogs, and sponsorship."
 >
   <div class="container">
     <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'FAQ', href: '/faq/' }]} />
-    <h1>Frequently asked questions</h1>
+    <h1>Frequently Asked Questions</h1>
     <p class="prose">
-      Replace: one sentence framing what these questions cover and where to ask
-      anything not answered here.
+      Everything about tickets, timing, parking, dogs, and accessibility —
+      and if we missed something, email
+      <a href="mailto:team@eyespy.org">team@eyespy.org</a>.
     </p>
-    <FAQ faqs={faqs} heading="General questions" />
+    <FAQ faqs={faqs} heading="PAWty questions, answered" />
   </div>
 </BaseLayout>

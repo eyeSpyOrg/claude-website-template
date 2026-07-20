@@ -15,8 +15,20 @@ const isActive = (href: string) =>
 <header class="site-header">
   <div class="site-header__inner">
     <a href="/" class="site-header__brand">
-      <!-- Swap for <img src={SITE.logo} alt={SITE.name}> per project -->
-      <span>{SITE.name}</span>
+      <img
+        class="site-header__logo site-header__logo--color"
+        src="/logo.png"
+        alt={`${SITE.name} — home`}
+        width="134"
+        height="48"
+      />
+      <img
+        class="site-header__logo site-header__logo--hc"
+        src="/logo-high-contrast.png"
+        alt={`${SITE.name} — home`}
+        width="134"
+        height="48"
+      />
     </a>
 
     <button
@@ -71,6 +83,10 @@ const isActive = (href: string) =>
     align-items: center;
     min-height: 44px;
   }
+  .site-header__logo { height: 48px; width: auto; }
+  .site-header__logo--hc { display: none; }
+  :global(html[data-a11y-contrast='high']) .site-header__logo--color { display: none; }
+  :global(html[data-a11y-contrast='high']) .site-header__logo--hc { display: inline; }
   .site-header__menu-btn {
     display: none;
     align-items: center;

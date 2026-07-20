@@ -1,0 +1,61 @@
+---
+/**
+ * Venue — Happy Brew: address, parking, accessibility, map link.
+ * Event schema included.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import EventSchema from '../components/schema/EventSchema.astro';
+import { SITE } from '../config/site.js';
+
+const mapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=Happy+Brew+3200+Hendricks+Ave+Jacksonville+FL+32207';
+---
+
+<BaseLayout
+  title="Venue — Happy Brew, Jacksonville"
+  description="The Fashion PAWty happens at Happy Brew, 3200 Hendricks Ave, Jacksonville, FL 32207 — a fully accessible venue with parking in the church lot next door on Hendricks Avenue."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Venue', href: '/venue/' }]} />
+    <h1>Where the PAWty Happens</h1>
+    <div class="prose">
+      <p class="venue-address">
+        <strong>Happy Brew</strong><br />
+        3200 Hendricks Ave, Jacksonville, FL 32207
+      </p>
+      <p>
+        The Fashion PAWty takes over Happy Brew — a welcoming Jacksonville spot
+        right on Hendricks Avenue. Come thirsty, come with your best outfit on,
+        and come ready to celebrate.
+      </p>
+      <p>
+        <a class="btn btn--primary" href={mapsUrl} rel="noopener">
+          Get directions to Happy Brew
+        </a>
+      </p>
+      {/* TODO: optionally swap the directions link for an accessible embedded
+          map once the team picks an embed approach (keep it keyboard-friendly
+          and consent-aware). */}
+
+      <h2>Getting there and good to know</h2>
+      <h3>Where do I park?</h3>
+      <p>
+        Park in the church lot next door on Hendricks Avenue, with overflow
+        parking behind the church.
+      </p>
+      <h3>Is the venue accessible?</h3>
+      <p>
+        The entire venue is accessible. Questions about your visit? Email
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and we'll make sure
+        you have what you need.
+      </p>
+      {/* TODO: rideshare drop-off note — optional, confirm with the team. */}
+    </div>
+  </div>
+  <EventSchema />
+</BaseLayout>
+
+<style>
+  .venue-address { font-size: var(--step-1); }
+</style>

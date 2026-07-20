@@ -4,11 +4,16 @@
       "staticDistDir": "./dist",
       "url": [
         "/index.html",
-        "/about/index.html",
+        "/tickets/index.html",
+        "/sponsors/index.html",
+        "/beneficiaries/index.html",
+        "/schedule/index.html",
+        "/venue/index.html",
+        "/merch/index.html",
         "/faq/index.html",
+        "/contact/index.html",
         "/accessibility/index.html",
         "/privacy/index.html",
-        "/contact/index.html",
         "/404.html"
       ],
       "numberOfRuns": 2

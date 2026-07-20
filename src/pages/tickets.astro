@@ -1,0 +1,51 @@
+---
+/**
+ * Tickets — $30 PAWty Pass. Copy from PAGE_COPY.md; Event schema.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import EventSchema from '../components/schema/EventSchema.astro';
+---
+
+<BaseLayout
+  title="Tickets — $30 PAWty Pass"
+  description="Fashion PAWty tickets are $30 and include the doggie fashion show, food, and mocktails on Sep 26 at Happy Brew, Jacksonville — supporting the blind and low vision community."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Tickets', href: '/tickets/' }]} />
+    <h1>Get Your Tickets</h1>
+    <div class="prose">
+      <p>
+        One ticket, one great afternoon, one very good cause. Your $30 gets you
+        into the show, food, and mocktails — and helps the blind and low vision
+        community navigate life with more confidence.
+      </p>
+
+      <h2>What's included in the $30 PAWty Pass?</h2>
+      <ul>
+        <li>Entry to the doggie fashion show on the orange carpet</li>
+        <li>Food</li>
+        <li>Mocktails</li>
+        <li>Games, music, and a whole lot of tail wags</li>
+      </ul>
+
+      <p>
+        {/* TODO: replace with real Stripe Payment Link */}
+        <a class="btn btn--primary" href="https://stripe.com">Buy Tickets — $30</a>
+      </p>
+      <p>
+        Tickets are processed securely through the Eye Spy Foundation's Stripe
+        account. Proceeds support the blind and low vision community and Leader
+        Dogs for the Blind.
+      </p>
+
+      <h2>About the dogs</h2>
+      <p>
+        The runway features a curated lineup of dogs for the show — so you can
+        relax and enjoy the strut. We love pups, but this is a people-first
+        celebration (we're hoping to welcome around 100 guests).
+      </p>
+    </div>
+  </div>
+  <EventSchema />
+</BaseLayout>

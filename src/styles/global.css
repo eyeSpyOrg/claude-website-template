@@ -1,4 +1,10 @@
 @import "tailwindcss";
+/* Self-hosted fonts (font-display: swap is built into @fontsource CSS) */
+@import "@fontsource/baloo-2/600.css";
+@import "@fontsource/baloo-2/700.css";
+@import "@fontsource/nunito-sans/400.css";
+@import "@fontsource/nunito-sans/600.css";
+@import "@fontsource/nunito-sans/700.css";
 
 /* ============================================================
    A11Y WEB FOUNDATION — GLOBAL STYLES
@@ -12,16 +18,20 @@
    Rebrand per project by changing values ONLY — never drop
    a pair below 4.5:1 (normal text) or 3:1 (large text/UI). */
 :root {
-  --color-bg: #ffffff;
-  --color-surface: #f4f6f8;
-  --color-text: #16202a;        /* 12.6:1 on bg */
-  --color-text-muted: #43525f;  /* 7.0:1 on bg  */
-  --color-accent: #0b5fa5;      /* 5.9:1 on bg — links, buttons */
-  --color-accent-hover: #084576;
-  --color-focus: #b4560c;       /* focus ring — distinct from accent */
-  --color-border: #c3ccd4;      /* 3.0:1 — meets non-text contrast */
+  /* Fashion PAWty palette — BRAND.md § 2.1, WCAG-verified (see scripts/check-contrast.mjs) */
+  --color-bg: #FBFAF7;          /* warm white */
+  --color-surface: #FFFFFF;
+  --color-text: #141414;        /* 17.65:1 on bg */
+  --color-text-muted: #4A4A4A;  /* 8.49:1 on bg  */
+  --color-accent: #0E5C6E;      /* deep teal, 7.25:1 on bg — links, buttons */
+  --color-accent-hover: #0A4653;
+  --color-focus: #B47800;       /* deep gold focus ring — 3.58:1 */
+  --color-border: #828F98;      /* 3.18:1 — meets non-text contrast */
+  /* Bright logo gold #E0A82E: decorative highlight ONLY (2.05:1) — never text */
+  --color-gold-highlight: #E0A82E;
 
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Baloo 2', var(--font-body);
 
   /* Fluid type scale, rem-based so browser/user zoom works (WCAG 1.4.4) */
   --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -84,7 +94,12 @@ main { display: block; }
 /* Standard page container — use on every page's top-level wrapper */
 .container { max-width: 72rem; margin-inline: auto; padding: 2.5rem 1rem; }
 
-h1, h2, h3, h4 { line-height: 1.2; text-wrap: balance; color: var(--color-text); }
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  text-wrap: balance;
+  color: var(--color-text);
+}
 h1 { font-size: var(--step-3); }
 h2 { font-size: var(--step-2); }
 h3 { font-size: var(--step-1); }
@@ -166,6 +181,79 @@ input, select, textarea {
 .field-error { color: #b3261e; font-weight: 600; }
 html[data-a11y-contrast='high'] [aria-invalid='true'] { border-color: #ff8a80; }
 html[data-a11y-contrast='high'] .field-error { color: #ff8a80; }
+
+/* ── Buttons (shared) ──────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+}
+.btn--primary { background: var(--color-accent); color: #ffffff; }
+.btn--primary:hover { background: var(--color-accent-hover); color: #ffffff; }
+.btn--secondary {
+  background: var(--color-surface);
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+.btn--secondary:hover { color: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+html[data-a11y-contrast='high'] .btn--primary { color: #000000; }
+
+/* ── Brand pattern bands ───────────────────────────────────
+   Signature icon motif as CSS backgrounds. The near-opaque
+   gradient overlay keeps the pattern at very low effective
+   opacity so text on these bands keeps full contrast. */
+.band--hero {
+  background-image:
+    linear-gradient(rgba(251, 250, 247, 0.93), rgba(251, 250, 247, 0.93)),
+    url('/assets/patterns/pattern-fullcolor-light.svg');
+  background-size: auto, 34rem;
+}
+.band--teal-light {
+  background-image:
+    linear-gradient(rgba(251, 250, 247, 0.94), rgba(251, 250, 247, 0.94)),
+    url('/assets/patterns/pattern-teal-light.svg');
+  background-size: auto, 34rem;
+}
+.band--dark {
+  background-color: #0A4653;
+  background-image:
+    linear-gradient(rgba(10, 70, 83, 0.95), rgba(10, 70, 83, 0.95)),
+    url('/assets/patterns/pattern-gold-on-teal.svg');
+  background-size: auto, 34rem;
+  color: #ffffff;
+}
+.band--dark h2, .band--dark h3 { color: #ffffff; }
+/* Text inside a pattern band sits on a SOLID background (axe-verifiable
+   contrast; pattern frames the content, never sits behind text) */
+.band--hero .container,
+.band--teal-light .container { background: var(--color-bg); }
+.band--dark .container { background: #0A4653; }
+html[data-a11y-contrast='high'] .band--hero,
+html[data-a11y-contrast='high'] .band--teal-light,
+html[data-a11y-contrast='high'] .band--dark {
+  background-image: none;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+html[data-a11y-contrast='high'] .band--dark h2,
+html[data-a11y-contrast='high'] .band--dark h3 { color: var(--color-text); }
+
+/* ── "Orange carpet" divider — decorative gold runway line ── */
+.carpet-divider {
+  border: 0;
+  height: 6px;
+  border-radius: 3px;
+  margin: 3rem auto;
+  max-width: 72rem;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-gold-highlight) 0 2rem,
+    transparent 2rem 3rem
+  );
+}
 
 /* ── Media defaults ───────────────────────────────────────── */
 img, video { max-width: 100%; height: auto; }

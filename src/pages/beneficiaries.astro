@@ -1,0 +1,51 @@
+---
+/**
+ * Beneficiaries — Eye Spy Foundation + Leader Dogs for the Blind.
+ * Leader Dogs copy is an original draft pending their sign-off.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="Who the PAWty Helps"
+  description="The Fashion PAWty benefits the Eye Spy Foundation and Leader Dogs for the Blind — two organizations helping the blind and low vision community navigate the world with confidence."
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[{ name: 'Home', href: '/' }, { name: 'Beneficiaries', href: '/beneficiaries/' }]}
+    />
+    <h1>Who the PAWty Helps</h1>
+    <div class="prose">
+      <p>
+        Every wagging tail on the orange carpet supports two organizations
+        working to help people navigate the world with confidence.
+      </p>
+
+      <h2>Eye Spy Foundation</h2>
+      <p>
+        At Eye Spy, we help the blind and low vision community navigate
+        community resources so they can live a better low vision lifestyle. We
+        greet everyone with a hug or a handshake — because connection comes
+        first — and we spend our days pointing people toward the programs,
+        services, and tools that make everyday life more accessible. The
+        Fashion PAWty is how we bring the whole community together to celebrate
+        that mission.
+      </p>
+
+      <h2>Leader Dogs for the Blind</h2>
+      {/* TODO: original draft copy — send to Leader Dogs partnerships contact
+          for sign-off and swap in any wording they prefer. */}
+      <p>
+        Leader Dogs for the Blind is a guide dog school that raises and trains
+        dogs to help people who are blind or low vision travel safely and
+        independently. From playful puppies to confident working guides, each
+        dog is prepared to become a trusted navigation partner — opening up new
+        freedom for the person at the other end of the harness. This year, the
+        Eye Spy Foundation is proud to sponsor one Leader Dogs puppy, and a
+        portion of every dollar raised at The Fashion PAWty goes directly to
+        their work. When you party with us, you help raise a future guide dog.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

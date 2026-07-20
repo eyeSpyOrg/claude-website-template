@@ -1,56 +1,67 @@
 /**
  * SITE CONFIG — SINGLE SOURCE OF TRUTH
  * =====================================
- * This is the ONLY file you edit when cloning this foundation for a new site.
- * Every SEO tag, schema block, header, and footer pulls from here.
- *
- * Per-project setup checklist:
- *   1. Fill in every field below
- *   2. Replace the PLACEHOLDER assets: /public/favicon.svg, /public/logo.svg
- *      (min 112x112), /public/og-default.jpg (1200x630, <300KB)
- *   3. Update /public/llms.txt
- *   4. Run `npm test` — must pass before first deploy
+ * The Fashion PAWty — "A Navigation Celebration"
+ * Values from BRAND.md § 2.3 / § 2.4. Edit here, never inline in pages.
  */
 
 export const SITE = {
   // ── Identity ──────────────────────────────────────────────
-  name: 'Site Name',                       // Organization / brand name
-  legalName: 'Legal Entity Name, Inc.',    // For Organization schema
-  url: 'https://www.example.org',          // Production URL, no trailing slash
-  titleTemplate: '%s | Site Name',         // %s = page title
+  name: 'The Fashion PAWty',
+  legalName: 'Eye Spy Foundation',
+  url: 'https://thefashionpawty.com',
+  titleTemplate: '%s | The Fashion PAWty',
   description:
-    'Default meta description, 145–160 characters, primary keyword within the first 50 characters. Written for humans first, answer-shaped for AEO.',
+    'The Fashion PAWty is a Jacksonville dog fashion show and community celebration on Sep 26 at Happy Brew, benefiting the blind and low vision community and Leader Dogs.',
   locale: 'en_US',
   language: 'en',
 
   // ── Organization schema (schema.org/Organization) ─────────
-  // Set orgType to 'Organization', 'NGO', 'LocalBusiness', 'Corporation', etc.
   orgType: 'Organization',
-  logo: '/logo.svg',                       // Absolute path from site root, min 112x112
-  foundingDate: '2024',
-  email: 'hello@example.org',
-  telephone: '+1-904-555-0100',
+  // PNG, not SVG: the vector exports from the .ai file were unusable
+  // (mislabeled colorways / a brand sheet) — see the build report.
+  logo: '/logo.png',
+  foundingDate: '2025',
+  email: 'team@eyespy.org',
+  telephone: '+1-844-222-8848',
   address: {
-    streetAddress: '123 Main St',
+    streetAddress: '3200 Hendricks Ave',
     addressLocality: 'Jacksonville',
     addressRegion: 'FL',
-    postalCode: '32202',
+    postalCode: '32207',
     addressCountry: 'US',
   },
-  // Social profiles — used for schema sameAs AND footer links
   socials: [
-    // { label: 'LinkedIn', url: 'https://www.linkedin.com/company/example' },
-    // { label: 'Instagram', url: 'https://www.instagram.com/example' },
+    { label: 'Instagram', url: 'https://www.instagram.com/eyespyorg' },
+    { label: 'Facebook', url: 'https://www.facebook.com/EyeSpyFoundation' },
   ],
 
   // ── Default social sharing image ───────────────────────────
-  ogImage: '/og-default.jpg',              // 1200x630, <300KB
+  ogImage: '/og-default.jpg',
+
+  // ── Event facts (feeds Event schema + pages — one source) ──
+  event: {
+    name: 'The Fashion PAWty — A Navigation Celebration',
+    startDate: '2026-09-26T16:00:00-04:00',
+    endDate: '2026-09-26T19:00:00-04:00',
+    venueName: 'Happy Brew',
+    ticketPrice: '30',
+    ticketUrl: 'https://thefashionpawty.com/tickets/',
+    description:
+      'A doggie fashion show down the orange carpet with mocktails, games, music, and merch — benefiting the blind and low vision community and Leader Dogs for the Blind.',
+  },
 
   // ── Navigation (drives Header + Footer) ────────────────────
   nav: [
     { label: 'Home', href: '/' },
-    { label: 'About', href: '/about/' },
+    { label: 'Tickets', href: '/tickets/' },
+    { label: 'Sponsors', href: '/sponsors/' },
+    { label: 'Beneficiaries', href: '/beneficiaries/' },
+    { label: 'Schedule', href: '/schedule/' },
+    { label: 'Venue', href: '/venue/' },
+    { label: 'Merch', href: '/merch/' },
     { label: 'FAQ', href: '/faq/' },
+    { label: 'Contact', href: '/contact/' },
   ],
   footerNav: [
     { label: 'Accessibility Statement', href: '/accessibility/' },
@@ -61,9 +72,8 @@ export const SITE = {
   // ── Phase 2 integrations (see INTEGRATIONS.md) ─────────────
   // Only PUBLIC identifiers belong here. Secrets go in env vars.
   integrations: {
-    ga4Id: '',              // e.g. 'G-XXXXXXXXXX' — empty disables GA4
-    hubspotPortalId: '',    // e.g. '244603402' — empty disables HubSpot
-    // Stripe publishable key only needed for Pattern C (Checkout Sessions):
+    ga4Id: 'G-G5XJTT1PX2',
+    hubspotPortalId: '',
     stripePublishableKey: '',
   },
 };

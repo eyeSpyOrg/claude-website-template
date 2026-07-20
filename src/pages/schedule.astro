@@ -1,0 +1,59 @@
+---
+/**
+ * Schedule — the six confirmed run-of-show blocks (BRAND.md).
+ * Event schema included.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import EventSchema from '../components/schema/EventSchema.astro';
+
+const blocks = [
+  { time: '4:00 PM', name: 'PAWty Kickoff', detail: 'Doors open. Mocktails flowing, vendors, games, and photo ops.' },
+  { time: '4:30 PM', name: 'Live Music', detail: 'Settle in and enjoy the soundtrack to our tail-wagging celebration.' },
+  { time: '5:15 PM', name: 'Mission Moment', detail: 'A short, heartfelt spotlight on the Eye Spy Foundation and Leader Dogs for the Blind.' },
+  { time: '5:30 PM', name: 'Runway Show', detail: 'Our four-legged models take the stage and strut for independence down the orange carpet.' },
+  { time: '6:45 PM', name: 'Best in Show Awards', detail: 'Crowd favorites, big applause, and a final celebration.' },
+  { time: '7:00 PM', name: 'PAWty Concludes', detail: 'Thank you for supporting accessibility, mobility, and freedom.' },
+];
+---
+
+<BaseLayout
+  title="Schedule of Events"
+  description="The Fashion PAWty schedule: doors at 4 PM, live music, the Mission Moment, the runway show at 5:30, and Best in Show awards — Sep 26, 2026 at Happy Brew, Jacksonville."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Schedule', href: '/schedule/' }]} />
+    <h1>Schedule of Events</h1>
+    <p class="prose">
+      Here's how the afternoon unfolds — three hours of tail-wagging fun with a
+      heartfelt mission at its center.
+    </p>
+
+    <h2>Run of show — Saturday, September 26, 4–7 PM</h2>
+    <ol class="schedule">
+      {blocks.map((b) => (
+        <li class="schedule__item">
+          <p class="schedule__time">{b.time}</p>
+          <div>
+            <h3>{b.name}</h3>
+            <p>{b.detail}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <EventSchema />
+</BaseLayout>
+
+<style>
+  .schedule { list-style: none; margin: 0; padding: 0; max-width: 46rem; }
+  .schedule__item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 2px dotted var(--color-gold-highlight);
+  }
+  .schedule__time { font-weight: 700; min-width: 6rem; margin: 0; }
+  .schedule__item h3 { margin: 0 0 0.25rem; }
+  .schedule__item p { margin: 0; }
+</style>
