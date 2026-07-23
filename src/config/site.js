@@ -31,9 +31,17 @@ export const SITE = {
     postalCode: '32207',
     addressCountry: 'US',
   },
+  // Social profiles — all Eye Spy Foundation, handle @eyespyorg.
+  // `icon` maps to an inline SVG in Footer.astro. Used for footer links
+  // AND Organization schema sameAs.
+  // NOTE: handles assumed @eyespyorg per brief — confirm each URL resolves.
   socials: [
-    { label: 'Instagram', url: 'https://www.instagram.com/eyespyorg' },
-    { label: 'Facebook', url: 'https://www.facebook.com/EyeSpyFoundation' },
+    { label: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/eyespyorg' },
+    { label: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/eyespyorg' },
+    { label: 'YouTube', icon: 'youtube', url: 'https://www.youtube.com/@eyespyorg' },
+    { label: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/company/eyespyorg' },
+    { label: 'TikTok', icon: 'tiktok', url: 'https://www.tiktok.com/@eyespyorg' },
+    { label: 'X', icon: 'x', url: 'https://x.com/eyespyorg' },
   ],
 
   // ── Default social sharing image ───────────────────────────
@@ -52,17 +60,20 @@ export const SITE = {
   },
 
   // ── Navigation (drives Header + Footer) ────────────────────
+  // Tickets is surfaced as the header "Get Tickets" button, not a nav link.
+  // Merch links out to the Printify shop (external — no on-site merch page).
   nav: [
     { label: 'Home', href: '/' },
-    { label: 'Tickets', href: '/tickets/' },
     { label: 'Sponsors', href: '/sponsors/' },
     { label: 'Beneficiaries', href: '/beneficiaries/' },
     { label: 'Schedule', href: '/schedule/' },
     { label: 'Venue', href: '/venue/' },
-    { label: 'Merch', href: '/merch/' },
+    { label: 'Merch', href: 'https://shop.thefashionpawty.com', external: true },
     { label: 'FAQ', href: '/faq/' },
     { label: 'Contact', href: '/contact/' },
   ],
+  // Shop URL reused by the header "Buy Merch" button
+  shopUrl: 'https://shop.thefashionpawty.com',
   footerNav: [
     { label: 'Accessibility Statement', href: '/accessibility/' },
     { label: 'Privacy Policy', href: '/privacy/' },

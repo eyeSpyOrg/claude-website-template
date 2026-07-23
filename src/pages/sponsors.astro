@@ -8,130 +8,144 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const pawtyTiers = [
-  {
-    name: 'Best in Show',
-    price: '$500',
-    pkg: 'Gold',
-    blurb:
-      "Our top billing. You're the main PAW-ty sponsor on every print and digital asset, plus the Runway (Orange Carpet) sponsor — your name on the star of the show.",
-  },
-  {
-    name: 'Top Dog',
-    price: '$200',
-    pkg: 'Silver',
-    blurb:
-      'Your choice of one signature area: the Music Stage, the Mock-Tail Bar, or the Chow-Down Station.',
-  },
-  {
-    name: 'Bark-star',
-    price: '$100',
-    pkg: 'Bronze',
-    blurb:
-      'Your choice of one station: DJ PAWty, Bone Up Station, Photo Booth, Merch Shop, or Sensory Games.',
-  },
+  { name: 'Best in Show', price: '$500', pkg: 'Gold', blurb: "Our top billing. You're the main PAW-ty sponsor on every print and digital asset, plus the Runway (Orange Carpet) sponsor — your name on the star of the show." },
+  { name: 'Top Dog', price: '$200', pkg: 'Silver', blurb: 'Your choice of one signature area: the Music Stage, the Mock-Tail Bar, or the Chow-Down Station.' },
+  { name: 'Bark-star', price: '$100', pkg: 'Bronze', blurb: 'Your choice of one station: DJ PAWty, Bone Up Station, Photo Booth, Merch Shop, or Sensory Games.' },
 ];
 const vendorTiers = [
-  {
-    name: 'Dog House',
-    price: '$200',
-    pkg: 'Gold',
-    blurb:
-      'Bring your own tent and set up on the back lawn to engage with all the PAWty people.',
-  },
-  {
-    name: 'PAW-parazzi',
-    price: '$100',
-    pkg: 'Silver',
-    blurb: 'A shout-out on our social media and emails.',
-  },
-  {
-    name: 'PAWty Animal',
-    price: '$50',
-    pkg: 'Bronze',
-    blurb: 'A PAWty Pass ticket plus your own tailgate chair.',
-  },
+  { name: 'Dog House', price: '$200', pkg: 'Gold', blurb: 'Bring your own tent and set up on the back lawn to engage with all the PAWty people.' },
+  { name: 'PAW-parazzi', price: '$100', pkg: 'Silver', blurb: 'A shout-out on our social media and emails.' },
+  { name: 'PAWty Animal', price: '$50', pkg: 'Bronze', blurb: 'A PAWty Pass ticket plus your own tailgate chair.' },
 ];
+const perks = ['Welcome goodie bag', 'Station signage', 'Social media & email placement', 'VIP seating for 2'];
 ---
 
 <BaseLayout
   title="Sponsor the PAWty"
   description="Sponsor The Fashion PAWty in Jacksonville — six tiers from $50 to $500 with signage, social placement, and VIP seating, all helping us raise $25,000 for the blind and low vision community."
 >
-  <div class="container">
-    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Sponsors', href: '/sponsors/' }]} />
-    <h1>Sponsor the PAWty</h1>
-    <p class="prose">
-      Every great party has people who make it happen. Pick your tier, put your
-      name on the fun, and help us reach our $25,000 goal for the blind and low
-      vision community. Every sponsorship includes a welcome goodie bag, station
-      signage, social media and email placement, and VIP seating for two.
-    </p>
-
-    <h2>PAW-ty Sponsor Tiers</h2>
-    <ul class="tiers">
-      {pawtyTiers.map((t) => (
-        <li class="tier">
-          <h3>{t.name}</h3>
-          <p class="tier__price">{t.price} <span class="tier__pkg">({t.pkg})</span></p>
-          <p>{t.blurb}</p>
-          <p>
-            {/* TODO: replace with real Stripe Payment Link */}
-            <a class="btn btn--primary" href="https://stripe.com">Sponsor — {t.name} {t.price}</a>
-          </p>
-        </li>
-      ))}
-    </ul>
-
-    <h2>Vendor Sponsor Tiers</h2>
-    <ul class="tiers">
-      {vendorTiers.map((t) => (
-        <li class="tier">
-          <h3>{t.name}</h3>
-          <p class="tier__price">{t.price} <span class="tier__pkg">({t.pkg})</span></p>
-          <p>{t.blurb}</p>
-          <p>
-            {/* TODO: replace with real Stripe Payment Link */}
-            <a class="btn btn--primary" href="https://stripe.com">Sponsor — {t.name} {t.price}</a>
-          </p>
-        </li>
-      ))}
-    </ul>
-
-    <p class="prose includes">
-      <strong>Every sponsorship includes:</strong> welcome goodie bag · station
-      signage · social media &amp; email placement · VIP seating for 2.
-    </p>
-
-    <h2>A big thank-you to our claimed sponsor</h2>
-    <div class="tier tier--claimed">
-      <h3>Photo Booth 📸</h3>
-      <p>
-        Proudly sponsored by the <strong>Lions Club of Jacksonville Beach</strong>.
-        Thank you for helping the PAWty shine!
-      </p>
+  <section class="band band--teal band--tight">
+    <div class="container">
+      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Sponsors', href: '/sponsors/' }]} />
+      <div class="section-head">
+        <p class="eyebrow">Put Your Name on the Fun</p>
+        <h1>Sponsor the PAWty</h1>
+        <p class="prose lead">
+          Every great party has people who make it happen. Pick your tier, put
+          your name on the fun, and help us reach our $25,000 goal for the blind
+          and low vision community.
+        </p>
+      </div>
+      <div class="panel perks">
+        <p class="perks__head">Every sponsorship includes</p>
+        <ul class="perks__list">
+          {perks.map((p) => <li class="perk-pill">{p}</li>)}
+        </ul>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="band" aria-labelledby="pawty-tiers">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Experience Areas</p>
+        <h2 id="pawty-tiers">PAW-ty Sponsor Tiers</h2>
+      </div>
+      <ul class="tiers grid grid--3">
+        {pawtyTiers.map((t) => (
+          <li class="card card--accent tier">
+            <p class="tier__pkg">{t.pkg}</p>
+            <h3 class="tier__name">{t.name}</h3>
+            <p class="tier__price">{t.price}</p>
+            <p class="tier__blurb">{t.blurb}</p>
+            {/* TODO: replace with real Stripe Payment Link */}
+            <a class="btn btn--primary tier__cta" href="https://stripe.com">Sponsor {t.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band--gold" aria-labelledby="vendor-tiers">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Bring Your Brand</p>
+        <h2 id="vendor-tiers">Vendor Sponsor Tiers</h2>
+      </div>
+      <ul class="tiers grid grid--3">
+        {vendorTiers.map((t) => (
+          <li class="card card--accent tier">
+            <p class="tier__pkg">{t.pkg}</p>
+            <h3 class="tier__name">{t.name}</h3>
+            <p class="tier__price">{t.price}</p>
+            <p class="tier__blurb">{t.blurb}</p>
+            {/* TODO: replace with real Stripe Payment Link */}
+            <a class="btn btn--primary tier__cta" href="https://stripe.com">Sponsor {t.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <p class="eyebrow">Thank You</p>
+        <h2>A Big Thank-You to Our Claimed Sponsor</h2>
+      </div>
+      <div class="card thanks">
+        <span class="thanks__icon" aria-hidden="true">📸</span>
+        <div>
+          <h3 class="thanks__h">Photo Booth</h3>
+          <p>
+            Proudly sponsored by the <strong>Lions Club of Jacksonville
+            Beach</strong>. Thank you for helping the PAWty shine!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .tiers {
-    list-style: none;
-    margin: 0 0 2rem;
-    padding: 0;
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  .lead { font-size: var(--step-1); color: var(--color-text-muted); }
+  .perks { display: grid; gap: var(--space-s); }
+  .perks__head {
+    margin: 0; font-family: var(--font-display); font-weight: 700;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-accent);
   }
-  .tier {
-    background: var(--color-surface);
-    border: 2px solid var(--color-border);
-    border-top: 6px solid var(--color-gold-highlight);
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
+  .perks__list {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
   }
-  .tier h3 { margin-top: 0; }
-  .tier__price { font-size: var(--step-1); font-weight: 700; margin: 0.25rem 0; }
-  .tier__pkg { font-size: var(--step-0); font-weight: 600; color: var(--color-text-muted); }
-  .tier--claimed { max-width: 34rem; }
-  .includes { margin-block: 1rem 2.5rem; }
+  .perk-pill {
+    font-weight: 600;
+    background: var(--color-teal-tint);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+  }
+  :global(html[data-a11y-contrast='high']) .perk-pill { background: var(--color-surface); }
+
+  .tiers { list-style: none; margin: 0; padding: 0; }
+  .tier { display: flex; flex-direction: column; }
+  .tier__pkg {
+    margin: 0; align-self: flex-start;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.75rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text);
+    background: var(--color-gold-tint); border: 1px solid var(--color-border);
+    border-radius: 999px; padding: 0.25rem 0.75rem;
+  }
+  .tier__name { margin: 0.75rem 0 0; }
+  .tier__price {
+    margin: 0.25rem 0 0; font-family: var(--font-display); font-weight: 700;
+    font-size: var(--step-2); color: var(--color-accent);
+  }
+  .tier__blurb { margin-top: 0.75rem; flex: 1; }
+  .tier__cta { margin-top: var(--space-m); align-self: flex-start; }
+
+  .thanks { display: flex; gap: var(--space-m); align-items: center; max-width: 40rem; }
+  .thanks__icon { font-size: 2.5rem; line-height: 1; }
+  .thanks__h { margin: 0 0 0.25rem; }
 </style>

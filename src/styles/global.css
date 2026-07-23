@@ -33,11 +33,33 @@
   --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: 'Baloo 2', var(--font-body);
 
+  /* Soft brand tints (derived from teal/gold — used for section
+     backgrounds and card accents; all text placed on them is verified). */
+  --color-teal-tint: #EAF1F2;   /* very soft teal wash */
+  --color-gold-tint: #FBF3E1;   /* very soft gold wash  */
+  --color-dark: #0A4653;        /* deep teal for dark bands */
+  --color-dark-2: #063843;      /* deeper teal, band gradients */
+
+  /* Elevation + radius scale for a consistent, designed feel */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 1px 2px rgba(6, 56, 67, 0.06), 0 2px 6px rgba(6, 56, 67, 0.06);
+  --shadow: 0 4px 12px rgba(6, 56, 67, 0.08), 0 12px 28px rgba(6, 56, 67, 0.10);
+
   /* Fluid type scale, rem-based so browser/user zoom works (WCAG 1.4.4) */
   --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
   --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
   --step-2: clamp(1.563rem, 1.4rem + 0.8vw, 2rem);
-  --step-3: clamp(1.953rem, 1.7rem + 1.25vw, 2.7rem);
+  --step-3: clamp(2.1rem, 1.7rem + 1.9vw, 3.1rem);
+
+  /* Fluid spacing scale — one vertical rhythm for the whole site */
+  --space-2xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);
+  --space-xs: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
+  --space-s: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+  --space-m: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --space-l: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --space-xl: clamp(3.5rem, 2.8rem + 3.5vw, 6rem);
 
   --a11y-font-scale: 1;         /* controlled by Accessibility Bar */
 }
@@ -52,6 +74,13 @@ html[data-a11y-contrast='high'] {
   --color-accent-hover: #ffe27a;
   --color-focus: #00e5ff;
   --color-border: #ffffff;
+  /* Flatten brand tints/tones to the high-contrast surface */
+  --color-teal-tint: #121212;
+  --color-gold-tint: #121212;
+  --color-dark: #000000;
+  --color-dark-2: #000000;
+  --shadow-sm: none;
+  --shadow: none;
 }
 html[data-a11y-fontsize='lg'] { --a11y-font-scale: 1.125; }
 html[data-a11y-fontsize='xl'] { --a11y-font-scale: 1.25; }
@@ -90,19 +119,57 @@ main { display: block; }
 
 /* Readable measure — long lines hurt low-vision and dyslexic readers */
 .prose { max-width: 70ch; }
+.prose > * + * { margin-top: var(--space-s); }
 
 /* Standard page container — use on every page's top-level wrapper */
-.container { max-width: 72rem; margin-inline: auto; padding: 2.5rem 1rem; }
+.container {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: var(--space-l) clamp(1rem, 4vw, 2rem);
+}
+.container--narrow { max-width: 54rem; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  line-height: 1.2;
+  line-height: 1.1;
   text-wrap: balance;
   color: var(--color-text);
 }
-h1 { font-size: var(--step-3); }
+h1 { font-size: var(--step-3); letter-spacing: -0.01em; }
 h2 { font-size: var(--step-2); }
 h3 { font-size: var(--step-1); }
+
+/* ── Vertical rhythm: predictable, generous spacing ─────────
+   Sections breathe; nothing is cramped. Uses the spacing scale. */
+.container > * + * { margin-top: var(--space-m); }
+.container > h2 { margin-top: var(--space-l); }
+.container > h2 + * { margin-top: var(--space-s); }
+.stack > * + * { margin-top: var(--space-s); }
+.stack-l > * + * { margin-top: var(--space-l); }
+.mx-auto { margin-inline: auto; }
+
+/* Section eyebrow / kicker — small uppercase label above a heading */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-2xs);
+}
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-gold-highlight);
+}
+.band--dark .eyebrow { color: var(--color-gold-highlight); }
+.band--dark .eyebrow::before { background: var(--color-gold-highlight); }
 
 /* ── Links: perceivable without color alone (WCAG 1.4.1) ──── */
 main a {
@@ -186,74 +253,142 @@ html[data-a11y-contrast='high'] .field-error { color: #ff8a80; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   text-decoration: none;
+  font-family: var(--font-display);
   font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  border-radius: 10px;
+  font-size: var(--step-0);
+  line-height: 1.1;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;          /* pill — friendly, on-brand */
+  white-space: nowrap;           /* CTAs never wrap mid-label */
+  border: 2px solid transparent;
+  transition: background-color 150ms ease, border-color 150ms ease,
+              transform 150ms ease, box-shadow 150ms ease;
 }
-.btn--primary { background: var(--color-accent); color: #ffffff; }
-.btn--primary:hover { background: var(--color-accent-hover); color: #ffffff; }
+.btn--primary { background: var(--color-accent); color: #ffffff; box-shadow: var(--shadow-sm); }
+.btn--primary:hover { background: var(--color-accent-hover); color: #ffffff; transform: translateY(-2px); box-shadow: var(--shadow); }
 .btn--secondary {
   background: var(--color-surface);
   color: var(--color-accent);
-  border: 2px solid var(--color-accent);
+  border-color: var(--color-accent);
 }
-.btn--secondary:hover { color: var(--color-accent-hover); border-color: var(--color-accent-hover); }
-html[data-a11y-contrast='high'] .btn--primary { color: #000000; }
+.btn--secondary:hover { color: var(--color-accent-hover); border-color: var(--color-accent-hover); transform: translateY(-2px); }
+/* Ticket CTA — teal background, gold letters (brand request).
+   Gold #E0A82E on teal is 3.54:1, so the text MUST stay large + bold
+   to meet WCAG AA large-text (≥3:1). font-size 1.2rem (≈19.2px) bold
+   clears the 18.66px large-text threshold. Do not shrink below this. */
+.btn--ticket {
+  background: var(--color-accent);
+  color: var(--color-gold-highlight);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.btn--ticket:hover { background: var(--color-accent-hover); color: var(--color-gold-highlight); transform: translateY(-2px); box-shadow: var(--shadow); }
+html[data-a11y-contrast='high'] .btn--ticket { background: var(--color-accent); color: #000000; }
+
+/* On dark bands: white pill reading as the CTA */
+.btn--onDark { background: #ffffff; color: var(--color-dark); }
+.btn--onDark:hover { background: var(--color-gold-tint); color: var(--color-dark-2); transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn--lg { padding: 1rem 2rem; font-size: var(--step-1); }
+html[data-a11y-contrast='high'] .btn--primary,
+html[data-a11y-contrast='high'] .btn--onDark { color: #000000; background: var(--color-accent); }
+html[data-a11y-motion='off'] .btn:hover { transform: none; }
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+
+/* ── Panels & cards — solid content surfaces on pattern bands ── */
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: clamp(1.5rem, 1rem + 3vw, 3rem);
+}
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-m);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.card--link:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+html[data-a11y-motion='off'] .card--link:hover,
+.card--accent { transform: none; }
+@media (prefers-reduced-motion: reduce) { .card--link:hover { transform: none; } }
+/* Gold top-rule accent for cards that want extra personality */
+.card--accent { border-top: 5px solid var(--color-gold-highlight); }
+
+/* Responsive auto-grid used by card collections */
+.grid { display: grid; gap: var(--space-m); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
 
 /* ── Brand pattern bands ───────────────────────────────────
-   Signature icon motif as CSS backgrounds. The near-opaque
-   gradient overlay keeps the pattern at very low effective
-   opacity so text on these bands keeps full contrast. */
-.band--hero {
-  background-image:
-    linear-gradient(rgba(251, 250, 247, 0.93), rgba(251, 250, 247, 0.93)),
-    url('/assets/patterns/pattern-fullcolor-light.svg');
-  background-size: auto, 34rem;
-}
-.band--teal-light {
-  background-image:
-    linear-gradient(rgba(251, 250, 247, 0.94), rgba(251, 250, 247, 0.94)),
-    url('/assets/patterns/pattern-teal-light.svg');
-  background-size: auto, 34rem;
-}
-.band--dark {
-  background-color: #0A4653;
-  background-image:
-    linear-gradient(rgba(10, 70, 83, 0.95), rgba(10, 70, 83, 0.95)),
-    url('/assets/patterns/pattern-gold-on-teal.svg');
-  background-size: auto, 34rem;
-  color: #ffffff;
-}
-.band--dark h2, .band--dark h3 { color: #ffffff; }
-/* Text inside a pattern band sits on a SOLID background (axe-verifiable
-   contrast; pattern frames the content, never sits behind text) */
-.band--hero .container,
-.band--teal-light .container { background: var(--color-bg); }
-.band--dark .container { background: #0A4653; }
-html[data-a11y-contrast='high'] .band--hero,
-html[data-a11y-contrast='high'] .band--teal-light,
-html[data-a11y-contrast='high'] .band--dark {
-  background-image: none;
+   Full-width sections. Each band has a SOLID background-color
+   (what contrast checkers read) with the signature motif painted
+   on a low-opacity ::before layer BEHIND the content. Text keeps
+   full, verifiable contrast against the solid color while the
+   pattern still shows through — best of both. */
+.band {
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--space-xl);
   background-color: var(--color-bg);
-  color: var(--color-text);
 }
-html[data-a11y-contrast='high'] .band--dark h2,
-html[data-a11y-contrast='high'] .band--dark h3 { color: var(--color-text); }
+.band > * { position: relative; z-index: 1; }
+.band > .container { padding-block: 0; }
+/* Compact band — used for page heroes so they sit above the fold */
+.band--tight { padding-block: var(--space-l); }
 
-/* ── "Orange carpet" divider — decorative gold runway line ── */
+/* Solid tinted bands — text sits directly on a solid color (verifiable
+   contrast). The motif appears via .pattern-strip dividers & framed
+   panels, never as an image behind live text. */
+.band--teal { background-color: var(--color-teal-tint); }
+.band--gold { background-color: var(--color-gold-tint); }
+.band--dark { background-color: var(--color-dark); color: #ffffff; }
+.band--dark h1, .band--dark h2, .band--dark h3 { color: #ffffff; }
+.band--dark .prose { color: #ffffff; }
+
+/* Decorative full-pattern strip — a slim band of pure motif with NO text.
+   This is where the pattern reads boldly; safe because nothing sits on it. */
+.pattern-strip {
+  height: clamp(3.5rem, 8vw, 5.5rem);
+  background: var(--color-teal-tint) url('/assets/patterns/pattern-fullcolor-light.svg') center / 15rem repeat;
+  border-block: 1px solid var(--color-border);
+}
+.pattern-strip--teal { background-color: var(--color-teal-tint); background-image: url('/assets/patterns/pattern-teal-light.svg'); }
+.pattern-strip--gold { background-color: var(--color-gold-tint); background-image: url('/assets/patterns/pattern-gold-light.svg'); }
+.pattern-strip--dark { background-color: var(--color-dark); background-image: url('/assets/patterns/pattern-gold-on-teal.svg'); }
+
+/* High-contrast theme flattens every band + hides decorative motif */
+html[data-a11y-contrast='high'] .pattern-strip { display: none; }
+html[data-a11y-contrast='high'] .band {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
+}
+html[data-a11y-contrast='high'] .band--dark h1,
+html[data-a11y-contrast='high'] .band--dark h2,
+html[data-a11y-contrast='high'] .band--dark h3,
+html[data-a11y-contrast='high'] .band--dark .prose { color: var(--color-text) !important; }
+
+/* ── "Orange carpet" divider — decorative gold runway trail ── */
 .carpet-divider {
   border: 0;
-  height: 6px;
-  border-radius: 3px;
-  margin: 3rem auto;
-  max-width: 72rem;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--color-gold-highlight) 0 2rem,
-    transparent 2rem 3rem
-  );
+  height: 8px;
+  margin: 0;
+  background:
+    repeating-linear-gradient(90deg,
+      var(--color-gold-highlight) 0 2rem, transparent 2rem 3.2rem);
 }
+.carpet-divider--spaced { margin-block: var(--space-l); }
+html[data-a11y-contrast='high'] .carpet-divider { background: var(--color-border); height: 3px; }
+
+/* Section heading cluster (eyebrow + title + intro), centered option */
+.section-head { max-width: 46rem; margin-bottom: var(--space-m); }
+.section-head--center { margin-inline: auto; text-align: center; }
+.section-head--center .eyebrow { justify-content: center; }
 
 /* ── Media defaults ───────────────────────────────────────── */
 img, video { max-width: 100%; height: auto; }
