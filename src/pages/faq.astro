@@ -4,7 +4,6 @@
  * generates the visible accordion AND FAQPage schema from one array.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import FAQ from '../components/FAQ.astro';
 import { SITE } from '../config/site.js';
 
@@ -26,7 +25,6 @@ const faqs = [
 >
   <section class="band band--teal band--tight">
     <div class="container container--narrow">
-      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'FAQ', href: '/faq/' }]} />
       <div class="section-head">
         <p class="eyebrow">Good to Know</p>
         <h1>Frequently Asked Questions</h1>

@@ -4,10 +4,10 @@
  * consistency for local SEO), secondary nav, social icons.
  * All content driven by src/config/site.js.
  *
- * Social links are circular icon buttons (teal background, gold icon).
- * Gold #E0A82E on teal is 3.54:1 — that clears the 3:1 minimum WCAG 2.2
- * requires for graphical objects/UI components (1.4.11). Each icon-only
- * link carries an aria-label so its purpose is announced.
+ * Social links are circular icon buttons (gold background, dark icon).
+ * Dark #141414 on gold #E0A82E is 8.37:1 — well past the 3:1 minimum WCAG
+ * 2.2 requires for graphical objects/UI components (1.4.11). (White on
+ * gold would be 2.14:1 and fail.) Each icon-only link carries an aria-label.
  */
 import { SITE } from '../config/site.js';
 const year = new Date().getFullYear();
@@ -99,11 +99,11 @@ const ICONS: Record<string, string> = {
   .social-icon {
     display: inline-flex; align-items: center; justify-content: center;
     width: 44px; height: 44px; border-radius: 999px;
-    background: var(--color-accent);
-    color: var(--color-gold-highlight);
+    background: var(--color-gold-highlight);
+    color: var(--color-text);
     transition: background-color 150ms ease, transform 150ms ease;
   }
-  .social-icon:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+  .social-icon:hover { background: #cf9a26; transform: translateY(-2px); }
   html[data-a11y-motion='off'] .social-icon:hover { transform: none; }
   @media (prefers-reduced-motion: reduce) { .social-icon:hover { transform: none; } }
   :global(html[data-a11y-contrast='high']) .social-icon { background: var(--color-accent); color: #000000; }

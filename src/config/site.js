@@ -60,15 +60,14 @@ export const SITE = {
   },
 
   // ── Navigation (drives Header + Footer) ────────────────────
-  // Tickets is surfaced as the header "Get Tickets" button, not a nav link.
-  // Merch links out to the Printify shop (external — no on-site merch page).
+  // Tickets & Merch are surfaced as the header "Get Tickets" / "Buy Merch"
+  // buttons, so they are not repeated as nav links.
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Sponsors', href: '/sponsors/' },
     { label: 'Beneficiaries', href: '/beneficiaries/' },
     { label: 'Schedule', href: '/schedule/' },
     { label: 'Venue', href: '/venue/' },
-    { label: 'Merch', href: 'https://shop.thefashionpawty.com', external: true },
     { label: 'FAQ', href: '/faq/' },
     { label: 'Contact', href: '/contact/' },
   ],

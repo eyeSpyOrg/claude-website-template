@@ -5,7 +5,6 @@
  * renders as a thank-you, NOT purchasable.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const pawtyTiers = [
   { name: 'Best in Show', price: '$500', pkg: 'Gold', blurb: "Our top billing. You're the main PAW-ty sponsor on every print and digital asset, plus the Runway (Orange Carpet) sponsor — your name on the star of the show." },
@@ -26,7 +25,6 @@ const perks = ['Welcome goodie bag', 'Station signage', 'Social media & email pl
 >
   <section class="band band--teal band--tight">
     <div class="container">
-      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Sponsors', href: '/sponsors/' }]} />
       <div class="section-head">
         <p class="eyebrow">Put Your Name on the Fun</p>
         <h1>Sponsor the PAWty</h1>

@@ -3,7 +3,6 @@
  * Tickets — $30 PAWty Pass. Copy from PAGE_COPY.md; Event schema.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import EventSchema from '../components/schema/EventSchema.astro';
 
@@ -21,7 +20,6 @@ const included = [
 >
   <section class="band band--teal band--tight">
     <div class="container">
-      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Tickets', href: '/tickets/' }]} />
       <div class="section-head">
         <p class="eyebrow">One PAWty Pass</p>
         <h1>Get Your Tickets</h1>

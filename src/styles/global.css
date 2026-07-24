@@ -275,17 +275,16 @@ html[data-a11y-contrast='high'] .field-error { color: #ff8a80; }
   border-color: var(--color-accent);
 }
 .btn--secondary:hover { color: var(--color-accent-hover); border-color: var(--color-accent-hover); transform: translateY(-2px); }
-/* Ticket CTA — teal background, gold letters (brand request).
-   Gold #E0A82E on teal is 3.54:1, so the text MUST stay large + bold
-   to meet WCAG AA large-text (≥3:1). font-size 1.2rem (≈19.2px) bold
-   clears the 18.66px large-text threshold. Do not shrink below this. */
+/* Ticket CTA — teal background, WHITE letters (per request). White on teal
+   is 7.57:1 (AA). White letters need this dark teal background; white on the
+   bright gold would be only 2.14:1 and fail, so the gold stays a background
+   accent elsewhere, not behind white text. */
 .btn--ticket {
   background: var(--color-accent);
-  color: var(--color-gold-highlight);
-  font-size: 1.2rem;
+  color: #ffffff;
   font-weight: 700;
 }
-.btn--ticket:hover { background: var(--color-accent-hover); color: var(--color-gold-highlight); transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn--ticket:hover { background: var(--color-accent-hover); color: #ffffff; transform: translateY(-2px); box-shadow: var(--shadow); }
 html[data-a11y-contrast='high'] .btn--ticket { background: var(--color-accent); color: #000000; }
 
 /* On dark bands: white pill reading as the CTA */
@@ -319,6 +318,17 @@ html[data-a11y-motion='off'] .card--link:hover,
 @media (prefers-reduced-motion: reduce) { .card--link:hover { transform: none; } }
 /* Gold top-rule accent for cards that want extra personality */
 .card--accent { border-top: 5px solid var(--color-gold-highlight); }
+
+/* Responsive 16:9 video embed (YouTube/Vimeo iframes) */
+.video-embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--color-dark);
+}
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* Responsive auto-grid used by card collections */
 .grid { display: grid; gap: var(--space-m); }

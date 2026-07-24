@@ -5,7 +5,11 @@
     "timeout": 30000,
     "chromeLaunchConfig": {
       "args": ["--no-sandbox", "--disable-dev-shm-usage"]
-    }
+    },
+    "//": "frame-tested is an axe limitation (it cannot run inside cross-origin",
+    "//2": "embeds like the Vimeo player) — not a defect on our page. Our iframe",
+    "//3": "has a descriptive title; Vimeo's player carries its own accessibility.",
+    "ignore": ["frame-tested"]
   },
   "urls": [
     "http://localhost:4321/",

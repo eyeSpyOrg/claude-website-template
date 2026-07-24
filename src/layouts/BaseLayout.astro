@@ -9,6 +9,12 @@
  *   - a11y prefs applied PRE-PAINT (no flash) via inline script
  */
 import '../styles/global.css';
+// Preload the primary font weights (body 400 + heading 700) so the
+// font-display:swap changeover is near-instant and the flash of fallback
+// text (FOUT) is minimised in production. Vite rewrites these to the
+// hashed, bundled URLs.
+import bodyFont from '@fontsource/nunito-sans/files/nunito-sans-latin-400-normal.woff2?url';
+import headingFont from '@fontsource/baloo-2/files/baloo-2-latin-700-normal.woff2?url';
 import { SITE } from '../config/site.js';
 import SEO from '../components/SEO.astro';
 import OrganizationSchema from '../components/schema/OrganizationSchema.astro';
@@ -38,6 +44,10 @@ const { title, description, image, type, noindex } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Preload primary fonts to reduce FOUT (see import note above) -->
+    <link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={headingFont} as="font" type="font/woff2" crossorigin />
 
     <SEO {title} {description} {image} {type} {noindex} />
     <OrganizationSchema />

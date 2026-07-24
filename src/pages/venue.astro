@@ -4,8 +4,8 @@
  * Event schema included.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import VideoFacade from '../components/VideoFacade.astro';
 import EventSchema from '../components/schema/EventSchema.astro';
 import { SITE } from '../config/site.js';
 
@@ -19,7 +19,6 @@ const mapsUrl =
 >
   <section class="band band--teal band--tight">
     <div class="container">
-      <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Venue', href: '/venue/' }]} />
       <div class="split">
         <div class="split__text">
           <p class="eyebrow">Right on Hendricks Ave</p>
@@ -74,6 +73,49 @@ const mapsUrl =
           {/* TODO: rideshare drop-off note — optional, confirm with the team. */}
           <p>Dropping off by rideshare? Use the Hendricks Avenue entrance. We'll confirm a dedicated drop-off spot closer to the event.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the host venue — concise Happy Brew mission + their film -->
+  <section class="band band--gold" aria-labelledby="hb-heading">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">About Our Host</p>
+        <h2 id="hb-heading">More Than a Coffee Shop: Meet Happy Brew</h2>
+        <p class="prose">
+          The Fashion PAWty is hosted at Happy Brew, a nonprofit community café
+          in Jacksonville with a mission close to our own: meaningful
+          employment, job training, and belonging for people with intellectual
+          and developmental disabilities. Their motto says it all —
+          "We Brew Possabilities."
+        </p>
+      </div>
+
+      <div class="split hb">
+        <div class="split__text">
+          <p class="prose">
+            A ministry first and a business second, Happy Brew builds an
+            inclusive community where people of all abilities work, connect, and
+            share hope — one cup of coffee at a time. Only about 13% of
+            Floridians with intellectual disabilities are employed, and Happy
+            Brew is changing that with every hire.
+          </p>
+          <p class="prose">
+            It's the perfect home for a celebration of accessibility — and the
+            reason the orange carpet rolls out here.
+          </p>
+          <p>
+            <a class="btn btn--primary" href="https://happybrew.org" rel="noopener">
+              Learn more about Happy Brew
+            </a>
+          </p>
+        </div>
+        <VideoFacade
+          vimeoId="995025963?h=cd5b44f7cf&dnt=1"
+          title="Happy Brew — We Brew Possabilities (film)"
+          label="Watch the Happy Brew film"
+        />
       </div>
     </div>
   </section>

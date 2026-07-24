@@ -102,10 +102,10 @@ const isActive = (href: string) =>
   .site-header__actions {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     margin-left: auto;
   }
-  .site-header__actions .btn { padding: 0.5rem 1.15rem; }
+  .site-header__actions .btn { padding: 0.5rem 1rem; }
 
   .site-header__menu-btn {
     display: none;
@@ -121,7 +121,7 @@ const isActive = (href: string) =>
   }
   .site-header__nav ul {
     display: flex;
-    gap: 0.1rem;
+    gap: 0.05rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -130,7 +130,7 @@ const isActive = (href: string) =>
   .site-header__nav a {
     display: inline-flex;
     align-items: center;
-    padding: 0.5rem 0.6rem;
+    padding: 0.5rem 0.5rem;
     color: var(--color-text);
     text-decoration: none;
     font-weight: 600;
@@ -146,19 +146,22 @@ const isActive = (href: string) =>
     color: var(--color-accent);
   }
 
-  @media (max-width: 66rem) {
+  /* Collapse to the hamburger only once the full nav can't fit comfortably
+     (tablet / narrow windows). Desktop keeps the full inline nav. Both the
+     Buy Merch and Get Tickets buttons stay visible at every width. */
+  @media (max-width: 60rem) {
     .site-header__inner { flex-wrap: wrap; }
     .site-header__menu-btn { display: inline-flex; }
     .site-header__nav { display: none; width: 100%; order: 3; }
     .site-header__nav.is-open { display: block; }
     .site-header__nav ul { flex-direction: column; }
     .site-header__nav a { width: 100%; }
-    /* On small screens the shop is reachable via the Merch nav link */
-    .site-header__buy { display: none; }
   }
-  @media (max-width: 26rem) {
+  @media (max-width: 30rem) {
+    .site-header__actions { gap: 0.3rem; }
     .site-header__actions .btn--secondary,
-    .site-header__actions .btn--ticket { padding: 0.5rem 0.9rem; }
+    .site-header__actions .btn--ticket { padding: 0.5rem 0.8rem; font-size: 0.95rem; }
+    .site-header__menu-btn { padding: 0.5rem 0.7rem; }
   }
 </style>
 
