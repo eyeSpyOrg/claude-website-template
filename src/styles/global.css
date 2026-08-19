@@ -46,6 +46,15 @@
   --radius-lg: 22px;
   --shadow-sm: 0 1px 2px rgba(6, 56, 67, 0.06), 0 2px 6px rgba(6, 56, 67, 0.06);
   --shadow: 0 4px 12px rgba(6, 56, 67, 0.08), 0 12px 28px rgba(6, 56, 67, 0.10);
+  --shadow-lg: 0 8px 20px rgba(6, 56, 67, 0.10), 0 24px 56px rgba(6, 56, 67, 0.14);
+
+  /* Alpha-blended borders — composite against whatever band sits behind
+     them, so cards read consistently on white, teal-tint and gold-tint.
+     Alphas are chosen so the blended edge still clears 3:1 (WCAG 1.4.11
+     non-text contrast) on every band we use — verified in
+     scripts/check-contrast.mjs, never eyeballed. */
+  --border-hairline: rgba(6, 56, 67, 0.55);
+  --border-strong: rgba(6, 56, 67, 0.72);
 
   /* Fluid type scale, rem-based so browser/user zoom works (WCAG 1.4.4) */
   --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -81,6 +90,10 @@ html[data-a11y-contrast='high'] {
   --color-dark-2: #000000;
   --shadow-sm: none;
   --shadow: none;
+  --shadow-lg: none;
+  /* Elevation carries no meaning in high contrast — borders do all the work */
+  --border-hairline: #ffffff;
+  --border-strong: #ffffff;
 }
 html[data-a11y-fontsize='lg'] { --a11y-font-scale: 1.125; }
 html[data-a11y-fontsize='xl'] { --a11y-font-scale: 1.25; }
@@ -362,15 +375,27 @@ html[data-a11y-motion='off'] .card--link:hover,
 .band--dark .prose { color: #ffffff; }
 
 /* Decorative full-pattern strip — a slim band of pure motif with NO text.
-   This is where the pattern reads boldly; safe because nothing sits on it. */
+   This is where the pattern reads boldly; safe because nothing sits on it.
+
+   ⚠ The pattern SVG filenames in /public/assets/patterns/ are MISLABELLED —
+   every "-light" export actually has a dark/black canvas and vice versa, the
+   same bad export that affected the logo SVGs. Verified by rendering each
+   file and sampling its dominant colour. The mapping below is by ACTUAL
+   appearance, not by filename, so these class names mean what they say:
+       pattern-teal-on-gold.svg  = teal motif on WHITE
+       pattern-gold-on-teal.svg  = gold motif on WHITE
+       pattern-gold-light.svg    = gold motif on TEAL  (the genuinely dark one)
+   Do not "correct" these paths to match their filenames without re-rendering
+   and checking the artwork first. background-color is only the pre-load
+   fallback — each SVG paints its own opaque canvas. */
 .pattern-strip {
   height: clamp(3.5rem, 8vw, 5.5rem);
-  background: var(--color-teal-tint) url('/assets/patterns/pattern-fullcolor-light.svg') center / 15rem repeat;
+  background: #ffffff url('/assets/patterns/pattern-teal-on-gold.svg') center / 15rem repeat;
   border-block: 1px solid var(--color-border);
 }
-.pattern-strip--teal { background-color: var(--color-teal-tint); background-image: url('/assets/patterns/pattern-teal-light.svg'); }
-.pattern-strip--gold { background-color: var(--color-gold-tint); background-image: url('/assets/patterns/pattern-gold-light.svg'); }
-.pattern-strip--dark { background-color: var(--color-dark); background-image: url('/assets/patterns/pattern-gold-on-teal.svg'); }
+.pattern-strip--teal { background-color: #ffffff; background-image: url('/assets/patterns/pattern-teal-on-gold.svg'); }
+.pattern-strip--gold { background-color: #ffffff; background-image: url('/assets/patterns/pattern-gold-on-teal.svg'); }
+.pattern-strip--dark { background-color: #006275; background-image: url('/assets/patterns/pattern-gold-light.svg'); }
 
 /* High-contrast theme flattens every band + hides decorative motif */
 html[data-a11y-contrast='high'] .pattern-strip { display: none; }

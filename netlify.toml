@@ -35,4 +35,19 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
+# ── Redirects ─────────────────────────────────────────────────
+# The singular /sponsor is a natural thing to type or print on a flyer.
+# Point it at the canonical /sponsors/ page rather than duplicating content.
+[[redirects]]
+  from = "/sponsor"
+  to = "/sponsors/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sponsor/"
+  to = "/sponsors/"
+  status = 301
+  force = true
+
 # Astro emits /404.html — Netlify serves it automatically for 404s.

@@ -35,6 +35,47 @@ const pairs = [
   ['gold highlight on bg (decorative ONLY)', '#E0A82E', BG, 0],
 ];
 
+/* ── Alpha-blended card borders (sponsors page) ──────────────────
+   Borders are declared as rgba() so they composite over whatever band
+   is behind them. Compose them here against every background we
+   actually place cards on, and hold each blended edge to the WCAG
+   1.4.11 non-text contrast floor of 3:1. */
+const toBytes = (h) => {
+  const n = h.replace('#', '');
+  return [0, 2, 4].map((i) => parseInt(n.slice(i, i + 2), 16));
+};
+const toHex = (arr) =>
+  '#' + arr.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('');
+/** Composite `fg` at `alpha` over opaque `bg` (simple source-over). */
+const blend = (fg, bg, alpha) => {
+  const f = toBytes(fg);
+  const b = toBytes(bg);
+  return toHex(f.map((c, i) => alpha * c + (1 - alpha) * b[i]));
+};
+
+const BORDER_INK = '#063843'; // rgba base used by --border-hairline/-strong
+const surfaces = [
+  ['surface white', '#FFFFFF'],
+  ['page warm-white', BG],
+  ['teal tint band', '#EAF1F2'],
+  ['gold tint band', '#FBF3E1'],
+];
+const borderTokens = [
+  ['--border-hairline', 0.55],
+  ['--border-strong', 0.72],
+];
+for (const [tokenName, alpha] of borderTokens) {
+  for (const [surfaceName, surfaceHex] of surfaces) {
+    const blended = blend(BORDER_INK, surfaceHex, alpha);
+    pairs.push([
+      `${tokenName} on ${surfaceName}`,
+      blended,
+      surfaceHex,
+      3,
+    ]);
+  }
+}
+
 let fail = false;
 console.log('Pair'.padEnd(42) + 'Ratio'.padEnd(10) + 'Required  Result');
 for (const [name, fg, bg, req] of pairs) {
