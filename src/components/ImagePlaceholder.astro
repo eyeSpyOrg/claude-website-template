@@ -23,11 +23,11 @@ interface Props {
   icon?: string;
   tone?: 'teal' | 'gold';
 }
-const { label, policy = 'ai', ratio = '4 / 3', icon = '🐾', tone = 'teal' } = Astro.props;
+const { label, policy = 'ai', ratio = '4 / 3', icon = '🖼️', tone = 'teal' } = Astro.props;
 const note =
   policy === 'real'
-    ? 'Real Eye Spy photo — people & guide dogs are never AI-generated'
-    : 'AI atmosphere/object image OK — replace with real event photos after Sep 26';
+    ? 'Real Eye Spy photo required — people in this community are never AI-generated'
+    : 'AI atmosphere/object image OK — replace with a real photo before launch';
 ---
 
 <figure
@@ -66,7 +66,7 @@ const note =
   .img-ph[data-ratio="3 / 4"] { aspect-ratio: 3 / 4; }
   .img-ph[data-ratio="16 / 9"] { aspect-ratio: 16 / 9; }
   .img-ph[data-ratio="1 / 1"] { aspect-ratio: 1 / 1; }
-  .img-ph--gold { background: var(--color-gold-tint); border-color: #7a5200; }
+  .img-ph--gold { background: var(--color-gold-tint); border-color: var(--color-accent); }
   .img-ph__icon { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; }
   .img-ph__cap { display: grid; gap: 0.5rem; max-width: 34ch; }
   .img-ph__label { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); }
@@ -80,7 +80,7 @@ const note =
     border-radius: 999px;
     padding: 0.4rem 0.9rem;
   }
-  .img-ph__note--real { border-color: #7a5200; }
+  .img-ph__note--real { border-color: var(--color-accent); }
 
   :global(html[data-a11y-contrast='high']) .img-ph {
     background: var(--color-surface);

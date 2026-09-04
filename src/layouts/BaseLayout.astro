@@ -13,8 +13,8 @@ import '../styles/global.css';
 // font-display:swap changeover is near-instant and the flash of fallback
 // text (FOUT) is minimised in production. Vite rewrites these to the
 // hashed, bundled URLs.
-import bodyFont from '@fontsource/nunito-sans/files/nunito-sans-latin-400-normal.woff2?url';
-import headingFont from '@fontsource/baloo-2/files/baloo-2-latin-700-normal.woff2?url';
+import bodyFont from '@fontsource/open-sans/files/open-sans-latin-400-normal.woff2?url';
+import headingFont from '@fontsource/poppins/files/poppins-latin-700-normal.woff2?url';
 import { SITE } from '../config/site.js';
 import SEO from '../components/SEO.astro';
 import OrganizationSchema from '../components/schema/OrganizationSchema.astro';
@@ -57,7 +57,7 @@ const { title, description, image, type, noindex } = Astro.props;
     <script is:inline>
       (function () {
         try {
-          ['fontsize', 'contrast', 'spacing', 'motion', 'links'].forEach(function (k) {
+          ['fontsize', 'contrast', 'spacing', 'motion', 'links', 'dyslexia'].forEach(function (k) {
             var v = localStorage.getItem('a11y-pref-' + k);
             if (v) document.documentElement.setAttribute('data-a11y-' + k, v);
           });

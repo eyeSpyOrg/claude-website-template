@@ -1,40 +1,36 @@
 /**
  * SITE CONFIG — SINGLE SOURCE OF TRUTH
  * =====================================
- * The Fashion PAWty — "A Navigation Celebration"
- * Values from BRAND.md § 2.3 / § 2.4. Edit here, never inline in pages.
+ * Eye Spy Foundation — nonprofit template
+ * Edit here, never inline in pages.
  */
 
 export const SITE = {
   // ── Identity ──────────────────────────────────────────────
-  name: 'The Fashion PAWty',
+  name: 'Eye Spy Foundation',
   legalName: 'Eye Spy Foundation',
-  url: 'https://thefashionpawty.com',
-  titleTemplate: '%s | The Fashion PAWty',
+  url: 'https://eyespyfoundation.org',
+  titleTemplate: '%s | Eye Spy Foundation',
   description:
-    'The Fashion PAWty is a Jacksonville dog fashion show and community celebration on Sep 26 at Happy Brew, benefiting the blind and low vision community and Leader Dogs.',
+    'Eye Spy Foundation helps blind and low vision people navigate toward a more informed, connected, and confident life — free navigation support, community events, and a curated resource directory.',
   locale: 'en_US',
   language: 'en',
 
   // ── Organization schema (schema.org/Organization) ─────────
-  orgType: 'Organization',
-  // PNG, not SVG: the vector exports from the .ai file were unusable
-  // (mislabeled colorways / a brand sheet) — see the build report.
+  orgType: 'NGO',
   logo: '/logo.png',
-  foundingDate: '2025',
+  foundingDate: '2023',
   email: 'team@eyespy.org',
   telephone: '+1-844-222-8848',
   address: {
-    streetAddress: '3200 Hendricks Ave',
+    streetAddress: '[PLACEHOLDER: Street Address]',
     addressLocality: 'Jacksonville',
     addressRegion: 'FL',
-    postalCode: '32207',
+    postalCode: '[PLACEHOLDER]',
     addressCountry: 'US',
   },
-  // Social profiles — all Eye Spy Foundation, handle @eyespyorg.
-  // `icon` maps to an inline SVG in Footer.astro. Used for footer links
-  // AND Organization schema sameAs.
-  // NOTE: handles assumed @eyespyorg per brief — confirm each URL resolves.
+
+  // Social profiles — handle @eyespyorg
   socials: [
     { label: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/eyespyorg' },
     { label: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/eyespyorg' },
@@ -47,35 +43,20 @@ export const SITE = {
   // ── Default social sharing image ───────────────────────────
   ogImage: '/og-default.jpg',
 
-  // ── Event facts (feeds Event schema + pages — one source) ──
-  event: {
-    name: 'The Fashion PAWty — A Navigation Celebration',
-    startDate: '2026-09-26T16:00:00-04:00',
-    endDate: '2026-09-26T19:00:00-04:00',
-    venueName: 'Happy Brew',
-    ticketPrice: '30',
-    ticketUrl: 'https://thefashionpawty.com/tickets/',
-    description:
-      'A doggie fashion show down the orange carpet with mocktails, games, music, and merch — benefiting the blind and low vision community and Leader Dogs for the Blind.',
-  },
-
   // ── Navigation (drives Header + Footer) ────────────────────
-  // Tickets & Merch are surfaced as the header "Get Tickets" / "Buy Merch"
-  // buttons, so they are not repeated as nav links.
   nav: [
     { label: 'Home', href: '/' },
-    { label: 'Sponsors', href: '/sponsors/' },
-    { label: 'Beneficiaries', href: '/beneficiaries/' },
-    { label: 'Schedule', href: '/schedule/' },
-    { label: 'Venue', href: '/venue/' },
-    { label: 'FAQ', href: '/faq/' },
+    { label: 'About', href: '/about/' },
+    { label: 'Programs', href: '/programs/' },
+    { label: 'Support', href: '/support/' },
     { label: 'Contact', href: '/contact/' },
+    { label: 'Documents', href: '/documents/' },
   ],
-  // Shop URL reused by the header "Buy Merch" button
-  shopUrl: 'https://shop.thefashionpawty.com',
   footerNav: [
     { label: 'Accessibility Statement', href: '/accessibility/' },
     { label: 'Privacy Policy', href: '/privacy/' },
+    { label: 'Terms of Use', href: '/terms/' },
+    { label: 'Cookie Policy', href: '/cookies/' },
     { label: 'Contact', href: '/contact/' },
   ],
 

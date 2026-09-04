@@ -5,15 +5,38 @@
  * Phase 2 via HubSpotForm.astro — never the embedded widget.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQ from '../components/FAQ.astro';
 import { SITE } from '../config/site.js';
 
-// Non-breaking space + hyphen (U+00A0 / U+2011) so the number never wraps
-const telDisplay = '(844) 222‑8848';
+const telDisplay = '(844) 222‑8848';
+
+const contactFaqs = [
+  {
+    question: 'How can I volunteer with Eye Spy?',
+    answer: "Email team@eyespy.org with 'Volunteer' in the subject line. We will send you information about current opportunities in navigation support, community events, and development.",
+  },
+  {
+    question: 'Can I request resources for someone else?',
+    answer: 'Yes. Our navigators can help you find resources for a loved one. Use the contact form or call us to get started.',
+  },
+  {
+    question: "How do I stay updated on Eye Spy's work?",
+    answer: 'Subscribe to our newsletter on the homepage or follow us on Instagram @eyespyorg and Facebook at Eye Spy Foundation.',
+  },
+  {
+    question: 'Is there a way to partner with Eye Spy?',
+    answer: "Absolutely. If you're an organization, healthcare provider, or community partner interested in collaboration, reach out via the contact form and we will discuss opportunities.",
+  },
+  {
+    question: 'What if I have accessibility issues with this website?',
+    answer: "We are committed to WCAG 2.2 AA accessibility. If you encounter any barriers, please email accessibility@eyespy.org with details and we will fix it quickly.",
+  },
+];
 ---
 
 <BaseLayout
   title="Contact"
-  description="Contact The Fashion PAWty team at team@eyespy.org or (844) 222-8848 with questions about tickets, sponsorship, or accessibility — we greet everyone with a hug or a handshake."
+  description="Contact Eye Spy Foundation at team@eyespy.org or (844) 222-8848. We help the blind and low vision community navigate resources — we greet everyone with a hug or a handshake."
 >
   <section class="band band--teal band--tight">
     <div class="container container--narrow">
@@ -22,7 +45,7 @@ const telDisplay = '(844) 222‑8848';
         <h1>Say Hello</h1>
         <p class="prose lead">
           We greet everyone with a hug or a handshake — and email works too.
-          Have a question about tickets, sponsorship, or bringing your pup?
+          Questions about programs, partnerships, or how to get involved?
         </p>
       </div>
     </div>
@@ -45,12 +68,11 @@ const telDisplay = '(844) 222‑8848';
       </div>
 
       <div class="card find-us">
-        <h3 class="find-us__h">Where is the PAWty?</h3>
+        <h3 class="find-us__h">Where to Find Us</h3>
         <p>
-          {SITE.event.venueName}, {SITE.address.streetAddress},
-          {SITE.address.addressLocality}, {SITE.address.addressRegion}
-          {SITE.address.postalCode} — see the <a href="/venue/">Venue page</a>
-          for parking and accessibility details.
+          Eye Spy Foundation is based in Jacksonville, Florida, serving Northeast
+          Florida and expanding nationally. Our resource platform is available
+          anywhere at <a href="https://eyespy.org">EyeSpy.org</a>.
         </p>
       </div>
 
@@ -61,6 +83,13 @@ const telDisplay = '(844) 222‑8848';
         <span aria-hidden="true">📝</span> A quick inquiry form is on its way.
         For now, email or call us — we respond within two business days.
       </p>
+    </div>
+  </section>
+
+  <!-- Getting involved FAQ -->
+  <section class="band band--gold">
+    <div class="container container--narrow">
+      <FAQ faqs={contactFaqs} heading="Common Questions" />
     </div>
   </section>
 </BaseLayout>

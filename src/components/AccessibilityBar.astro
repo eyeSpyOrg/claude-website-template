@@ -20,12 +20,13 @@
     class="a11y-bar__toggle"
     aria-expanded="false"
     aria-controls="a11y-panel"
+    aria-label="Accessibility options"
+    title="Accessibility options"
     data-a11y-toggle
   >
-    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2Z"/>
     </svg>
-    Accessibility
   </button>
 
   <div id="a11y-panel" class="a11y-bar__panel" hidden>
@@ -47,6 +48,7 @@
         <button type="button" data-a11y-flag="spacing" data-on="on" aria-pressed="false">Text spacing</button>
         <button type="button" data-a11y-flag="motion" data-on="off" aria-pressed="false">Reduce motion</button>
         <button type="button" data-a11y-flag="links" data-on="underline" aria-pressed="false">Underline links</button>
+        <button type="button" data-a11y-flag="dyslexia" data-on="on" aria-pressed="false">Dyslexia-friendly font</button>
       </div>
     </fieldset>
 
@@ -65,13 +67,14 @@
   .a11y-bar__toggle {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.65rem 1rem;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
     background: var(--color-accent);
     color: #ffffff;
     border: 2px solid transparent;
-    border-radius: 999px;
-    font-weight: 600;
+    border-radius: 50%;
     box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
   }
   html[data-a11y-contrast='high'] .a11y-bar__toggle {
@@ -90,10 +93,22 @@
     border-radius: 12px;
     padding: 1rem;
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
+    font-family: 'Open Sans', system-ui, sans-serif;
   }
-  .a11y-bar__heading { font-size: 1.1rem; margin: 0 0 0.75rem; }
+  .a11y-bar__heading {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+  }
   .a11y-bar__panel fieldset { border: 0; padding: 0; margin: 0 0 0.75rem; }
-  .a11y-bar__panel legend { font-weight: 700; padding: 0; margin-bottom: 0.4rem; }
+  .a11y-bar__panel legend {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 700;
+    padding: 0;
+    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
+  }
   .a11y-bar__group { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .a11y-bar__panel button {
     background: var(--color-surface);
@@ -101,7 +116,9 @@
     border: 2px solid var(--color-border);
     border-radius: 8px;
     padding: 0.5rem 0.75rem;
+    font-family: 'Open Sans', system-ui, sans-serif;
     font-weight: 600;
+    font-size: 0.875rem;
   }
   .a11y-bar__panel button[aria-pressed='true'] {
     background: var(--color-accent);
@@ -115,7 +132,7 @@
 </style>
 
 <script>
-  const PREF_KEYS = ['fontsize', 'contrast', 'spacing', 'motion', 'links'] as const;
+  const PREF_KEYS = ['fontsize', 'contrast', 'spacing', 'motion', 'links', 'dyslexia'] as const;
   const storageKey = (k: string) => `a11y-pref-${k}`;
   const root = document.documentElement;
 

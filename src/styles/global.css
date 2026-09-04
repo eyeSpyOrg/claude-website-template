@@ -1,10 +1,11 @@
 @import "tailwindcss";
-/* Self-hosted fonts (font-display: swap is built into @fontsource CSS) */
-@import "@fontsource/baloo-2/600.css";
-@import "@fontsource/baloo-2/700.css";
-@import "@fontsource/nunito-sans/400.css";
-@import "@fontsource/nunito-sans/600.css";
-@import "@fontsource/nunito-sans/700.css";
+/* Self-hosted fonts via @fontsource (font-display: swap included) */
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/600.css";
+@import "@fontsource/open-sans/700.css";
 
 /* ============================================================
    A11Y WEB FOUNDATION — GLOBAL STYLES
@@ -13,48 +14,47 @@
    ============================================================ */
 
 /* ── Design tokens ─────────────────────────────────────────
-   All color pairs below meet WCAG contrast:
-   text/bg = 12.6:1 · muted/bg = 7.0:1 · accent/bg = 5.9:1
-   Rebrand per project by changing values ONLY — never drop
-   a pair below 4.5:1 (normal text) or 3:1 (large text/UI). */
+   ESF brand palette. Verified WCAG 2.1 AA ratios inline.
+   USAGE RULES (enforced in code below):
+   1. Text on white/Ghost Grey → Shadow Black or Burned Orange only.
+   2. Original-Orange fills → Shadow Black text (5.1:1). Never white (2.9:1 — fails).
+   3. Burned-Orange fills → white text OK (5.9:1 — passes AA).
+   4. Wink is focus outlines, icons, and large headings ONLY — not body text/links.
+   Rebrand: change values only — never drop below 4.5:1 (normal text) or 3:1 (large/UI). */
 :root {
-  /* Fashion PAWty palette — BRAND.md § 2.1, WCAG-verified (see scripts/check-contrast.mjs) */
-  --color-bg: #FBFAF7;          /* warm white */
-  --color-surface: #FFFFFF;
-  --color-text: #141414;        /* 17.65:1 on bg */
-  --color-text-muted: #4A4A4A;  /* 8.49:1 on bg  */
-  --color-accent: #0E5C6E;      /* deep teal, 7.25:1 on bg — links, buttons */
-  --color-accent-hover: #0A4653;
-  --color-focus: #B47800;       /* deep gold focus ring — 3.58:1 */
-  --color-border: #828F98;      /* 3.18:1 — meets non-text contrast */
-  /* Bright logo gold #E0A82E: decorative highlight ONLY (2.05:1) — never text */
-  --color-gold-highlight: #E0A82E;
+  /* ESF brand palette — WCAG-verified contrast ratios noted inline */
+  --color-bg:           #FFFFFF;              /* page background */
+  --color-surface:      #F2F2F2;              /* Ghost Grey — cards, panels */
+  --color-text:         #222222;              /* Shadow Black — 16.1:1 on white */
+  --color-text-muted:   rgba(34,34,34,0.65); /* ~5.3:1 composite on white; verify on Ghost Grey before launch */
+  --color-accent:       #A83A05;              /* Burned Orange — 5.9:1 on white — links, small accents, buttons */
+  --color-accent-hover: #7D2B04;              /* Darkened Burned Orange — 9.6:1 on white */
+  --color-brand:        #F37121;              /* Original Orange — fills/backgrounds ONLY; never text on light bg (2.9:1) */
+  --color-brand-soft:   #FBCDB1;              /* Peach — section/card backgrounds; 10.1:1 with Shadow Black */
+  --color-focus:        #5E7AC3;              /* Wink — focus rings, icons, large headings ≥18pt; 3.88:1 on white */
+  --color-border:       #767676;              /* 4.54:1 on white (meets non-text AND normal-text contrast) */
 
-  --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Baloo 2', var(--font-body);
+  /* Semantic aliases kept for backward compat with existing component classes */
+  --color-gold-highlight: #F37121;            /* → Original Orange (decorative accents, icon bg, divider stripe) */
+  --color-teal-tint:      #FBCDB1;            /* → Peach (band--teal section backgrounds; 10.1:1 w/ Shadow Black) */
+  --color-gold-tint:      #FEF5EE;            /* → Warm Cream (band--gold, lighter secondary-band wash) */
+  --color-dark:           #222222;            /* → Shadow Black (dark band backgrounds) */
+  --color-dark-2:         #111111;            /* → Near-black (deeper dark elements) */
 
-  /* Soft brand tints (derived from teal/gold — used for section
-     backgrounds and card accents; all text placed on them is verified). */
-  --color-teal-tint: #EAF1F2;   /* very soft teal wash */
-  --color-gold-tint: #FBF3E1;   /* very soft gold wash  */
-  --color-dark: #0A4653;        /* deep teal for dark bands */
-  --color-dark-2: #063843;      /* deeper teal, band gradients */
+  --font-body: 'Open Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Poppins', var(--font-body);
 
-  /* Elevation + radius scale for a consistent, designed feel */
+  /* Elevation + radius scale */
   --radius-sm: 8px;
   --radius: 14px;
   --radius-lg: 22px;
-  --shadow-sm: 0 1px 2px rgba(6, 56, 67, 0.06), 0 2px 6px rgba(6, 56, 67, 0.06);
-  --shadow: 0 4px 12px rgba(6, 56, 67, 0.08), 0 12px 28px rgba(6, 56, 67, 0.10);
-  --shadow-lg: 0 8px 20px rgba(6, 56, 67, 0.10), 0 24px 56px rgba(6, 56, 67, 0.14);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow: 0 4px 12px rgba(0,0,0,0.08), 0 12px 28px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 20px rgba(0,0,0,0.10), 0 24px 56px rgba(0,0,0,0.14);
 
-  /* Alpha-blended borders — composite against whatever band sits behind
-     them, so cards read consistently on white, teal-tint and gold-tint.
-     Alphas are chosen so the blended edge still clears 3:1 (WCAG 1.4.11
-     non-text contrast) on every band we use — verified in
-     scripts/check-contrast.mjs, never eyeballed. */
-  --border-hairline: rgba(6, 56, 67, 0.55);
-  --border-strong: rgba(6, 56, 67, 0.72);
+  /* Alpha borders — composite against each band to clear 3:1 (WCAG 1.4.11) */
+  --border-hairline: rgba(0,0,0,0.15);
+  --border-strong:   rgba(0,0,0,0.28);
 
   /* Fluid type scale, rem-based so browser/user zoom works (WCAG 1.4.4) */
   --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -81,9 +81,12 @@ html[data-a11y-contrast='high'] {
   --color-text-muted: #e8e8e8;
   --color-accent: #ffd23f;
   --color-accent-hover: #ffe27a;
+  --color-brand: #ffd23f;
+  --color-brand-soft: #121212;
   --color-focus: #00e5ff;
   --color-border: #ffffff;
   /* Flatten brand tints/tones to the high-contrast surface */
+  --color-gold-highlight: #ffd23f;
   --color-teal-tint: #121212;
   --color-gold-tint: #121212;
   --color-dark: #000000;
@@ -91,7 +94,6 @@ html[data-a11y-contrast='high'] {
   --shadow-sm: none;
   --shadow: none;
   --shadow-lg: none;
-  /* Elevation carries no meaning in high contrast — borders do all the work */
   --border-hairline: #ffffff;
   --border-strong: #ffffff;
 }
@@ -113,6 +115,13 @@ html[data-a11y-motion='off'] *::after {
   scroll-behavior: auto !important;
 }
 html[data-a11y-links='underline'] main a { text-decoration: underline !important; }
+/* Dyslexia-friendly font: Verdana has distinct letterforms that reduce character confusion.
+   Upgrade: npm install @fontsource/atkinson-hyperlegible, import it in global.css, then
+   set --font-body here to 'Atkinson Hyperlegible' for a purpose-built dyslexia font. */
+html[data-a11y-dyslexia='on'] {
+  --font-body: Verdana, Geneva, Tahoma, sans-serif;
+  --font-display: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 /* ── Base document ─────────────────────────────────────────── */
 html {
@@ -280,6 +289,7 @@ html[data-a11y-contrast='high'] .field-error { color: #ff8a80; }
   transition: background-color 150ms ease, border-color 150ms ease,
               transform 150ms ease, box-shadow 150ms ease;
 }
+/* Burned Orange bg + white text: 5.9:1 — passes AA */
 .btn--primary { background: var(--color-accent); color: #ffffff; box-shadow: var(--shadow-sm); }
 .btn--primary:hover { background: var(--color-accent-hover); color: #ffffff; transform: translateY(-2px); box-shadow: var(--shadow); }
 .btn--secondary {
@@ -288,21 +298,20 @@ html[data-a11y-contrast='high'] .field-error { color: #ff8a80; }
   border-color: var(--color-accent);
 }
 .btn--secondary:hover { color: var(--color-accent-hover); border-color: var(--color-accent-hover); transform: translateY(-2px); }
-/* Ticket CTA — teal background, WHITE letters (per request). White on teal
-   is 7.57:1 (AA). White letters need this dark teal background; white on the
-   bright gold would be only 2.14:1 and fail, so the gold stays a background
-   accent elsewhere, not behind white text. */
-.btn--ticket {
-  background: var(--color-accent);
-  color: #ffffff;
-  font-weight: 700;
-}
-.btn--ticket:hover { background: var(--color-accent-hover); color: #ffffff; transform: translateY(-2px); box-shadow: var(--shadow); }
-html[data-a11y-contrast='high'] .btn--ticket { background: var(--color-accent); color: #000000; }
+/* Original Orange bg + Shadow Black text: 5.1:1 — passes AA.
+   NEVER use white text on Original Orange (2.9:1 — fails). */
+.btn--brand { background: var(--color-brand); color: var(--color-text); font-weight: 700; box-shadow: var(--shadow-sm); }
+.btn--brand:hover { background: #CC5D18; color: var(--color-text); transform: translateY(-2px); box-shadow: var(--shadow); }
+html[data-a11y-contrast='high'] .btn--brand { background: var(--color-accent); color: #000000; }
 
-/* On dark bands: white pill reading as the CTA */
-.btn--onDark { background: #ffffff; color: var(--color-dark); }
-.btn--onDark:hover { background: var(--color-gold-tint); color: var(--color-dark-2); transform: translateY(-2px); box-shadow: var(--shadow); }
+/* On brand (Original Orange) bands: Shadow Black bg + white text. #222 on #F37121 = 5.1:1 ✓ */
+.btn--onBrand { background: var(--color-text); color: #ffffff; font-weight: 700; box-shadow: var(--shadow-sm); }
+.btn--onBrand:hover { background: var(--color-dark-2); color: #ffffff; transform: translateY(-2px); box-shadow: var(--shadow); }
+html[data-a11y-contrast='high'] .btn--onBrand { background: var(--color-accent); color: #000000; }
+
+/* On dark bands: white pill. Shadow Black on white: 16.1:1. */
+.btn--onDark { background: #ffffff; color: var(--color-text); }
+.btn--onDark:hover { background: var(--color-surface); color: var(--color-text); transform: translateY(-2px); box-shadow: var(--shadow); }
 .btn--lg { padding: 1rem 2rem; font-size: var(--step-1); }
 html[data-a11y-contrast='high'] .btn--primary,
 html[data-a11y-contrast='high'] .btn--onDark { color: #000000; background: var(--color-accent); }
@@ -395,7 +404,7 @@ html[data-a11y-motion='off'] .card--link:hover,
 }
 .pattern-strip--teal { background-color: #ffffff; background-image: url('/assets/patterns/pattern-teal-on-gold.svg'); }
 .pattern-strip--gold { background-color: #ffffff; background-image: url('/assets/patterns/pattern-gold-on-teal.svg'); }
-.pattern-strip--dark { background-color: #006275; background-image: url('/assets/patterns/pattern-gold-light.svg'); }
+.pattern-strip--dark { background-color: #222222; background-image: url('/assets/patterns/pattern-gold-light.svg'); }
 
 /* High-contrast theme flattens every band + hides decorative motif */
 html[data-a11y-contrast='high'] .pattern-strip { display: none; }
@@ -408,17 +417,17 @@ html[data-a11y-contrast='high'] .band--dark h2,
 html[data-a11y-contrast='high'] .band--dark h3,
 html[data-a11y-contrast='high'] .band--dark .prose { color: var(--color-text) !important; }
 
-/* ── "Orange carpet" divider — decorative gold runway trail ── */
-.carpet-divider {
+/* ── Decorative brand divider strip ── */
+.accent-divider {
   border: 0;
   height: 8px;
   margin: 0;
   background:
     repeating-linear-gradient(90deg,
-      var(--color-gold-highlight) 0 2rem, transparent 2rem 3.2rem);
+      var(--color-brand) 0 2rem, transparent 2rem 3.2rem);
 }
-.carpet-divider--spaced { margin-block: var(--space-l); }
-html[data-a11y-contrast='high'] .carpet-divider { background: var(--color-border); height: 3px; }
+.accent-divider--spaced { margin-block: var(--space-l); }
+html[data-a11y-contrast='high'] .accent-divider { background: var(--color-border); height: 3px; }
 
 /* Section heading cluster (eyebrow + title + intro), centered option */
 .section-head { max-width: 46rem; margin-bottom: var(--space-m); }

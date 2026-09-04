@@ -4,10 +4,10 @@
  * consistency for local SEO), secondary nav, social icons.
  * All content driven by src/config/site.js.
  *
- * Social links are circular icon buttons (gold background, dark icon).
- * Dark #141414 on gold #E0A82E is 8.37:1 — well past the 3:1 minimum WCAG
- * 2.2 requires for graphical objects/UI components (1.4.11). (White on
- * gold would be 2.14:1 and fail.) Each icon-only link carries an aria-label.
+ * Social links are circular icon buttons (Original Orange background, Shadow Black icon).
+ * Shadow Black (#222222) on Original Orange (#F37121) is 5.1:1 — clears the 3:1
+ * minimum WCAG 2.2 requires for graphical objects/UI (1.4.11). Never use white on
+ * Original Orange (2.9:1 — fails). Each icon-only link carries an aria-label.
  */
 import { SITE } from '../config/site.js';
 const year = new Date().getFullYear();
@@ -85,7 +85,7 @@ const ICONS: Record<string, string> = {
   nav[aria-label='Footer'] ul { display: grid; gap: 0.25rem; }
   nav[aria-label='Footer'] a { color: var(--color-text); display: inline-flex; align-items: center; min-height: 44px; }
 
-  /* Social icon buttons — circular, teal bg, gold glyph */
+  /* Social icon buttons — circular, Original Orange bg, Shadow Black glyph */
   .site-footer__social-head {
     margin: 0 0 0.75rem;
     font-family: var(--font-display);
@@ -103,7 +103,7 @@ const ICONS: Record<string, string> = {
     color: var(--color-text);
     transition: background-color 150ms ease, transform 150ms ease;
   }
-  .social-icon:hover { background: #cf9a26; transform: translateY(-2px); }
+  .social-icon:hover { background: #CC5D18; transform: translateY(-2px); }
   html[data-a11y-motion='off'] .social-icon:hover { transform: none; }
   @media (prefers-reduced-motion: reduce) { .social-icon:hover { transform: none; } }
   :global(html[data-a11y-contrast='high']) .social-icon { background: var(--color-accent); color: #000000; }

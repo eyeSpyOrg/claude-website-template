@@ -1,7 +1,7 @@
 ---
 /**
  * Privacy Policy — describes what this site actually does today:
- * consent-gated GA4, Stripe-hosted payments, email contact.
+ * consent-gated GA4, Stripe-hosted payments, HubSpot forms, email contact.
  * Not legal advice; have counsel review before launch.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -11,7 +11,7 @@ import { SITE } from '../config/site.js';
 
 <BaseLayout
   title="Privacy Policy"
-  description="The Fashion PAWty privacy policy: we collect no personal data unless you email us or accept analytics cookies, and ticket payments are handled entirely by Stripe."
+  description="Eye Spy Foundation privacy policy: we collect no personal data unless you contact us or accept analytics cookies. Donations are processed entirely by Stripe."
 >
   <div class="container">
     <Breadcrumbs
@@ -20,18 +20,18 @@ import { SITE } from '../config/site.js';
     <h1>Privacy Policy</h1>
     <div class="prose">
       <p>
-        {SITE.name} collects as little personal information as possible: nothing
-        at all unless you email us, buy a ticket through Stripe, or accept
-        analytics cookies.
+        {SITE.name} collects as little personal information as possible — nothing
+        at all unless you contact us, donate through Stripe, or accept analytics cookies.
       </p>
 
       <h2>What information do we collect?</h2>
       <p>
         If you email us at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, we
-        receive your email address and whatever you choose to share. Ticket and
-        sponsorship payments are processed entirely by Stripe on Stripe's
-        servers — we never see or store your card details. With your consent, we
-        use Google Analytics to understand how visitors use the site.
+        receive your email address and whatever you choose to share. Donations are
+        processed entirely by Stripe on Stripe's servers — we never see or store
+        your card details. If you submit a form on our site, that data goes to
+        HubSpot via their Forms Submission API. With your consent, we use Google
+        Analytics to understand how visitors use the site.
       </p>
 
       <h2>How do we use cookies and analytics?</h2>
@@ -48,7 +48,7 @@ import { SITE } from '../config/site.js';
         within two business days.
       </p>
 
-      <p><em>Last updated: July 20, 2026.</em></p>
+      <p><em>Last updated: [PLACEHOLDER: date].</em></p>
     </div>
   </div>
 </BaseLayout>
