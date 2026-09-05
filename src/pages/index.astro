@@ -86,7 +86,7 @@ const faqs = [
   />
 
   <!-- Programs teaser -->
-  <section class="band" aria-labelledby="fg-heading">
+  <div class="band">
     <div class="container">
       <FeatureGrid
         eyebrow="What We Do"
@@ -98,10 +98,10 @@ const faqs = [
         <a class="btn btn--primary" href="/programs/">See all programs</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Impact metrics -->
-  <section class="band band--teal" aria-labelledby="im-heading">
+  <div class="band band--teal">
     <div class="container">
       <ImpactMetrics
         eyebrow="The Work in Numbers"
@@ -109,7 +109,7 @@ const faqs = [
         metrics={metrics}
       />
     </div>
-  </section>
+  </div>
 
   <!-- Story / photo split -->
   <section class="band" aria-labelledby="story-heading">
@@ -144,17 +144,17 @@ const faqs = [
   </section>
 
   <!-- Newsletter -->
-  <section class="band band--gold" aria-labelledby="newsletter-heading">
+  <div class="band band--gold">
     <div class="container container--narrow">
       <NewsletterSignup
         heading="Stay Connected"
         description="Resources, events, and stories from the blind and low vision community — delivered to your inbox. No spam, unsubscribe anytime."
       />
     </div>
-  </section>
+  </div>
 
   <!-- FAQ -->
-  <section class="band">
+  <div class="band">
     <div class="container container--narrow">
       <p class="eyebrow">Good to Know</p>
       <FAQ faqs={faqs} heading="Frequently Asked Questions" />
@@ -163,7 +163,7 @@ const faqs = [
         <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
       </p>
     </div>
-  </section>
+  </div>
 </BaseLayout>
 
 <style>

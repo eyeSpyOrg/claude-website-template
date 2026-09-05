@@ -94,7 +94,7 @@ const faqs = [
   </section>
 
   <!-- Impact metrics -->
-  <section class="band band--teal" aria-labelledby="program-impact-heading">
+  <div class="band band--teal">
     <div class="container">
       <ImpactMetrics
         eyebrow="The Numbers"
@@ -102,10 +102,10 @@ const faqs = [
         metrics={programMetrics}
       />
     </div>
-  </section>
+  </div>
 
   <!-- Story section: Before / Struggle / Breakthrough / Now -->
-  <section class="band" aria-labelledby="program-story-heading" id="navigation">
+  <div class="band" id="navigation">
     <div class="container">
       <StorySection
         eyebrow="A Real Story"
@@ -121,14 +121,14 @@ const faqs = [
         ctaHref="/support/"
       />
     </div>
-  </section>
+  </div>
 
   <!-- FAQ -->
-  <section class="band band--gold">
+  <div class="band band--gold">
     <div class="container container--narrow">
       <FAQ faqs={faqs} heading="Questions About Our Programs" />
     </div>
-  </section>
+  </div>
 
   <!-- CTA band -->
   <section class="band band--dark" aria-labelledby="programs-cta">

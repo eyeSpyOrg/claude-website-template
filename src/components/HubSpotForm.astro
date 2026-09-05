@@ -41,9 +41,9 @@ const formId = `hsf-${formGuid.slice(0, 8)}`;
   data-portal={portalId}
   data-guid={formGuid}
   novalidate
-  aria-labelledby={`${formId}-heading`}
+  aria-labelledby={heading ? `${formId}-heading` : undefined}
 >
-  <h2 id={`${formId}-heading`}>{heading}</h2>
+  {heading && <h2 id={`${formId}-heading`}>{heading}</h2>}
 
   <!-- Announced to screen readers on success/failure -->
   <p class="hs-form__status" role="status" aria-live="polite" data-hs-status></p>
