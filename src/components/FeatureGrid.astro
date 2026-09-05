@@ -34,7 +34,7 @@ const { features, heading, eyebrow, columns = 3 } = Astro.props;
       {heading && <h2 id="fg-heading">{heading}</h2>}
     </div>
   )}
-  <ul class={`fg-grid fg-grid--${columns}`} role="list">
+  <ul class={`fg-grid fg-grid--${columns}`}>
     {features.map((f) => (
       <li class="fg-card">
         {f.icon && <span class="fg-card__icon" aria-hidden="true">{f.icon}</span>}

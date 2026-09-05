@@ -47,7 +47,7 @@ const types = [...new Set(docs.map((d) => d.type ?? 'other'))];
   </div>
 )}
 
-<ul class="docs-grid" role="list">
+<ul class="docs-grid">
   {docs.map((doc) => (
     <li data-year={doc.year} data-type={doc.type ?? 'other'}>
       <DocumentCard {...doc} />

@@ -34,12 +34,12 @@ const { metrics, heading, eyebrow } = Astro.props;
       {heading && <h2 id="im-heading">{heading}</h2>}
     </div>
   )}
-  <ul class={`im-grid im-grid--${Math.min(metrics.length, 4)}`} role="list">
+  <ul class={`im-grid im-grid--${Math.min(metrics.length, 4)}`}>
     {metrics.map((m) => (
       <li class="im-card">
         {m.icon && <span class="im-card__icon" aria-hidden="true">{m.icon}</span>}
-        <span class="im-card__number" aria-label={`${m.number} ${m.label}`}>{m.number}</span>
-        <span class="im-card__label" aria-hidden="true">{m.label}</span>
+        <span class="im-card__number">{m.number}</span>
+        <span class="im-card__label">{m.label}</span>
         {m.detail && <span class="im-card__detail">{m.detail}</span>}
       </li>
     ))}

@@ -86,7 +86,7 @@ const faqs = [
   />
 
   <!-- Programs teaser -->
-  <section class="band" aria-labelledby="programs-heading">
+  <section class="band" aria-labelledby="fg-heading">
     <div class="container">
       <FeatureGrid
         eyebrow="What We Do"
@@ -94,14 +94,14 @@ const faqs = [
         features={programs}
         columns={3}
       />
-      <div style="text-align:center;margin-top:var(--space-m)">
+      <div class="cta-center">
         <a class="btn btn--primary" href="/programs/">See all programs</a>
       </div>
     </div>
   </section>
 
   <!-- Impact metrics -->
-  <section class="band band--teal" aria-labelledby="impact-heading">
+  <section class="band band--teal" aria-labelledby="im-heading">
     <div class="container">
       <ImpactMetrics
         eyebrow="The Work in Numbers"
@@ -127,7 +127,7 @@ const faqs = [
           We greet everyone with a hug or a handshake. That is not a tagline.
           It is how we show up.
         </p>
-        <div style="display:flex;gap:var(--space-s);flex-wrap:wrap;margin-top:var(--space-m)">
+        <div class="cta-row">
           <a class="btn btn--primary" href="/about/">Our story</a>
           <a class="btn btn--secondary" href="/support/">Support this work</a>
         </div>
@@ -158,7 +158,7 @@ const faqs = [
     <div class="container container--narrow">
       <p class="eyebrow">Good to Know</p>
       <FAQ faqs={faqs} heading="Frequently Asked Questions" />
-      <p class="prose" style="margin-top:var(--space-m)">
+      <p class="prose faq-footer">
         More questions? Visit the <a href="/faq/">full FAQ page</a> or email
         <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
       </p>
@@ -176,4 +176,7 @@ const faqs = [
   @media (min-width: 52rem) {
     .story-split { grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
   }
+  .cta-center { text-align: center; margin-top: var(--space-m); }
+  .cta-row { display: flex; gap: var(--space-s); flex-wrap: wrap; margin-top: var(--space-m); }
+  .faq-footer { margin-top: var(--space-m); }
 </style>

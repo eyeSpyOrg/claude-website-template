@@ -36,7 +36,7 @@ const { videos, heading, eyebrow, columns = 3 } = Astro.props;
     </div>
   )}
   {videos.length > 0 ? (
-    <ul class={`vg-grid vg-grid--${columns}`} role="list">
+    <ul class={`vg-grid vg-grid--${columns}`}>
       {videos.map((v) => (
         <li>
           <YouTubeEmbed videoId={v.videoId} title={v.title} description={v.description} />
