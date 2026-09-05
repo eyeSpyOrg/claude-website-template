@@ -12,6 +12,8 @@
  *   />
  */
 
+import { uniqueId } from '../utils/uniqueId';
+
 interface Feature {
   icon?: string;
   heading: string;
@@ -25,13 +27,14 @@ interface Props {
   columns?: 2 | 3 | 4;
 }
 const { features, heading, eyebrow, columns = 3 } = Astro.props;
+const headingId = heading ? uniqueId('fg-heading') : undefined;
 ---
 
-<section class="feature-grid" aria-labelledby={heading ? 'fg-heading' : undefined}>
+<section class="feature-grid" aria-labelledby={headingId}>
   {(eyebrow || heading) && (
     <div class="section-head">
       {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-      {heading && <h2 id="fg-heading">{heading}</h2>}
+      {heading && <h2 id={headingId}>{heading}</h2>}
     </div>
   )}
   <ul class={`fg-grid fg-grid--${columns}`}>

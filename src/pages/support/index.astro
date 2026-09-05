@@ -152,7 +152,7 @@ const videos: { videoId: string; title: string; description?: string }[] = [
   <div class="band">
     <div class="container container--narrow">
       <FAQ faqs={donationFaqs} heading="Giving FAQs" />
-      <p class="prose" style="margin-top:var(--space-m)">
+      <p class="prose faq-footer">
         More questions? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> —
         a real person will respond.
       </p>
@@ -178,7 +178,7 @@ const videos: { videoId: string; title: string; description?: string }[] = [
     <div class="container">
       <p class="eyebrow">From the Community</p>
       <h2 id="voices-heading">What People Say</h2>
-      <p class="prose" style="max-width:60ch;margin-bottom:var(--space-m)">
+      <p class="prose section-intro">
         These are placeholder quotes. Replace with real voices from participants
         and donors before launch. Per brand guidelines, all attributed quotes require
         human review and approval.
@@ -204,4 +204,7 @@ const videos: { videoId: string; title: string; description?: string }[] = [
   }
   @media (min-width: 40rem) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 64rem) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .faq-footer { margin-top: var(--space-m); }
+  .section-intro { max-width: 60ch; margin-bottom: var(--space-m); }
 </style>

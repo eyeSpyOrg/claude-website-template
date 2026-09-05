@@ -39,6 +39,8 @@
  *   />
  */
 
+import { uniqueId } from '../utils/uniqueId';
+
 interface Cta { label: string; href: string }
 interface Props {
   eyebrow?: string;
@@ -80,17 +82,21 @@ const secondaryBtnClass = isDark || isBrand ? 'btn--onDark' : 'btn--secondary';
 const sectionClass = bgImage
   ? 'band band--tight hero-section hero-section--bg'
   : `band band--${variant} band--tight hero-section`;
+
+const headingId = uniqueId('hero-heading');
 ---
 
 <section
   class={sectionClass}
-  aria-labelledby="hero-heading"
-  {...bgImage ? { style: `background-image:url('${bgImage}')` } : {}}
+  aria-labelledby={headingId}
 >
+  {bgImage && (
+    <img class="hero-section__bg-img" src={bgImage} alt="" fetchpriority="high" decoding="async" />
+  )}
   <div class={`container${hasImage && !bgImage ? ' hero-section__grid' : ''}`}>
     <div class="hero-section__copy">
       {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-      <H id="hero-heading" class="hero-section__heading">{heading}</H>
+      <H id={headingId} class="hero-section__heading">{heading}</H>
       {body && <p class="lead">{body}</p>}
       {(primaryCta || secondaryCta) && (
         <div class="hero-section__ctas">
@@ -149,19 +155,24 @@ const sectionClass = bgImage
   /* Background-image hero */
   .hero-section--bg {
     position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     background-color: var(--color-dark);
     color: #ffffff;
     isolation: isolate;
+  }
+  .hero-section__bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
   }
   .hero-section--bg::before {
     content: '';
     position: absolute;
     inset: 0;
     background: rgba(17,17,17,0.65);
-    z-index: 0;
+    z-index: -1;
   }
   .hero-section--bg > .container { position: relative; z-index: 1; }
   .hero-section--bg h1,
@@ -171,6 +182,6 @@ const sectionClass = bgImage
 
   /* High contrast overrides */
   html[data-a11y-contrast='high'] .band--brand { background-color: var(--color-bg); color: var(--color-text); }
-  html[data-a11y-contrast='high'] .hero-section--bg { background-image: none !important; }
+  html[data-a11y-contrast='high'] .hero-section__bg-img { display: none; }
   html[data-a11y-contrast='high'] .hero-section--bg::before { display: none; }
 </style>

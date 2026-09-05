@@ -193,13 +193,13 @@ const values = [
 
   <!-- CTA band -->
   <section class="band band--dark" aria-labelledby="about-cta">
-    <div class="container container--narrow" style="text-align:center">
+    <div class="container container--narrow cta-band--center">
       <h2 id="about-cta">Ready to Help People Find What They Need?</h2>
       <p class="prose">
         Every dollar funds free navigation support, curated resources, and community
         programs for the blind and low vision community.
       </p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:var(--space-m)">
+      <div class="cta-row">
         <a class="btn btn--onDark btn--lg" href="/support/">Support accessible navigation</a>
         <a class="btn btn--onDark btn--lg" href="/contact/">Get in touch</a>
       </div>
@@ -247,4 +247,7 @@ const values = [
     margin: 0 0 var(--space-xs);
   }
   .eco-card p:last-child { margin: 0; color: var(--color-text-muted); }
+
+  .cta-band--center { text-align: center; }
+  .cta-row { display: flex; gap: var(--space-s); justify-content: center; flex-wrap: wrap; margin-top: var(--space-m); }
 </style>

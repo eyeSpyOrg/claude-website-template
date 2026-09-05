@@ -13,6 +13,8 @@
  *   />
  */
 
+import { uniqueId } from '../utils/uniqueId';
+
 interface Metric {
   number: string;
   label: string;
@@ -25,13 +27,14 @@ interface Props {
   eyebrow?: string;
 }
 const { metrics, heading, eyebrow } = Astro.props;
+const headingId = heading ? uniqueId('im-heading') : undefined;
 ---
 
-<section class="impact-metrics" aria-labelledby={heading ? 'im-heading' : undefined}>
+<section class="impact-metrics" aria-labelledby={headingId}>
   {(eyebrow || heading) && (
     <div class="section-head">
       {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-      {heading && <h2 id="im-heading">{heading}</h2>}
+      {heading && <h2 id={headingId}>{heading}</h2>}
     </div>
   )}
   <ul class={`im-grid im-grid--${Math.min(metrics.length, 4)}`}>

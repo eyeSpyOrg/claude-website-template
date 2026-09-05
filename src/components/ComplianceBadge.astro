@@ -22,7 +22,7 @@ const { ein, charityNavigatorUrl, candidUrl, compact = false } = Astro.props;
 const displayEin = ein ?? (SITE as any).ein ?? '';
 ---
 
-<div class={`compliance-badge${compact ? ' compliance-badge--compact' : ''}`} role="region" aria-label="Nonprofit compliance information">
+<section class={`compliance-badge${compact ? ' compliance-badge--compact' : ''}`} aria-label="Nonprofit compliance information">
   <div class="compliance-badge__status">
     <span class="compliance-badge__icon" aria-hidden="true">✅</span>
     <div>
@@ -68,7 +68,7 @@ const displayEin = ein ?? (SITE as any).ein ?? '';
       )}
     </div>
   )}
-</div>
+</section>
 
 <style>
   .compliance-badge {

@@ -81,7 +81,7 @@ const faqs = [
     <div class="container">
       <p class="eyebrow">What We Offer</p>
       <h2 id="programs-heading">Three Ways We Help</h2>
-      <p class="prose" style="max-width:60ch;margin-bottom:var(--space-m)">
+      <p class="prose section-intro">
         These programs were designed with input from the blind and low vision community —
         not just for them. That difference shows up in every detail.
       </p>
@@ -132,14 +132,14 @@ const faqs = [
 
   <!-- CTA band -->
   <section class="band band--dark" aria-labelledby="programs-cta">
-    <div class="container container--narrow" style="text-align:center">
+    <div class="container container--narrow cta-band--center">
       <h2 id="programs-cta">Your Support Keeps These Programs Free</h2>
       <p class="prose">
         When you give to Eye Spy Foundation, you fund real people helping the
         blind and low vision community navigate toward a better low vision lifestyle.
         No overhead-heavy programs. No vague outcomes. Real help, real people.
       </p>
-      <a class="btn btn--onDark btn--lg" style="margin-top:var(--space-m);display:inline-block" href="/support/">Support our programs</a>
+      <a class="btn btn--onDark btn--lg cta-band__btn" href="/support/">Support our programs</a>
     </div>
   </section>
 </BaseLayout>
@@ -152,4 +152,8 @@ const faqs = [
   }
   @media (min-width: 40rem) { .programs-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 64rem) { .programs-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .section-intro { max-width: 60ch; margin-bottom: var(--space-m); }
+  .cta-band--center { text-align: center; }
+  .cta-band__btn { margin-top: var(--space-m); display: inline-block; }
 </style>

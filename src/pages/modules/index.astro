@@ -58,12 +58,12 @@ const SAMPLE_FEATURES = [
     </div>
     <div class="mod-demo mod-demo--pad">
       <p class="eyebrow">Eyebrow / kicker label</p>
-      <h1 style="margin:0">Heading 1 — Navigate. Discover.</h1>
-      <h2 style="margin:0.5rem 0 0">Heading 2 — Find. Connect.</h2>
-      <h3 style="margin:0.5rem 0 0">Heading 3 — Community & Resources</h3>
-      <p class="lead" style="margin:1rem 0 0">Lead text — slightly larger body copy used in hero sections and section intros. Open Sans 400.</p>
-      <p style="margin:0.75rem 0 0">Body text — the default font size used for paragraphs, descriptions, and form fields. <a href="#">Links are underlined</a> and use Burned Orange for perceivability.</p>
-      <p style="margin:0.5rem 0 0; color:var(--color-text-muted)">Muted text — used for captions, metadata, and secondary information. Meets 4.5:1+ on white and Ghost Grey.</p>
+      <p class="demo-type demo-type--h1">Heading 1 — Navigate. Discover.</p>
+      <p class="demo-type demo-type--h2">Heading 2 — Find. Connect.</p>
+      <p class="demo-type demo-type--h3">Heading 3 — Community &amp; Resources</p>
+      <p class="lead demo-type--lead">Lead text — slightly larger body copy used in hero sections and section intros. Open Sans 400.</p>
+      <p class="demo-type--body">Body text — the default font size used for paragraphs, descriptions, and form fields. <a href="#">Links are underlined</a> and use Burned Orange for perceivability.</p>
+      <p class="demo-type--muted">Muted text — used for captions, metadata, and secondary information. Meets 4.5:1+ on white and Ghost Grey.</p>
     </div>
   </div>
 
@@ -77,14 +77,14 @@ const SAMPLE_FEATURES = [
     </div>
     <div class="mod-demo mod-demo--pad">
       <div class="color-swatches">
-        <div class="swatch"><div class="swatch__chip" style="background:#FFFFFF;border:2px solid #e0e0e0"></div><p class="swatch__name">White</p><p class="swatch__hex">#FFFFFF — page bg</p></div>
-        <div class="swatch"><div class="swatch__chip" style="background:#F2F2F2;border:2px solid #e0e0e0"></div><p class="swatch__name">Ghost Grey</p><p class="swatch__hex">#F2F2F2 — surface</p></div>
-        <div class="swatch"><div class="swatch__chip" style="background:#222222"></div><p class="swatch__name">Shadow Black</p><p class="swatch__hex">#222222 — body text</p></div>
-        <div class="swatch"><div class="swatch__chip" style="background:#A83A05"></div><p class="swatch__name">Burned Orange</p><p class="swatch__hex">#A83A05 — links/accent</p><p class="swatch__ratio">5.9:1 on white ✓</p></div>
-        <div class="swatch"><div class="swatch__chip" style="background:#F37121"></div><p class="swatch__name">Original Orange</p><p class="swatch__hex">#F37121 — fills only</p><p class="swatch__ratio">Never as text on light bg</p></div>
-        <div class="swatch"><div class="swatch__chip" style="background:#FBCDB1;border:2px solid #e0e0e0"></div><p class="swatch__name">Peach</p><p class="swatch__hex">#FBCDB1 — soft bands</p><p class="swatch__ratio">10.1:1 w/ Shadow Black ✓</p></div>
-        <div class="swatch"><div class="swatch__chip" style="background:#5E7AC3"></div><p class="swatch__name">Wink</p><p class="swatch__hex">#5E7AC3 — focus only</p><p class="swatch__ratio">3.88:1 on white (non-text) ✓</p></div>
-        <div class="swatch"><div class="swatch__chip" style="background:#767676"></div><p class="swatch__name">Border</p><p class="swatch__hex">#767676</p><p class="swatch__ratio">4.54:1 on white ✓</p></div>
+        <div class="swatch"><div class="swatch__chip swatch__chip--white"></div><p class="swatch__name">White</p><p class="swatch__hex">#FFFFFF — page bg</p></div>
+        <div class="swatch"><div class="swatch__chip swatch__chip--grey"></div><p class="swatch__name">Ghost Grey</p><p class="swatch__hex">#F2F2F2 — surface</p></div>
+        <div class="swatch"><div class="swatch__chip swatch__chip--black"></div><p class="swatch__name">Shadow Black</p><p class="swatch__hex">#222222 — body text</p></div>
+        <div class="swatch"><div class="swatch__chip swatch__chip--accent"></div><p class="swatch__name">Burned Orange</p><p class="swatch__hex">#A83A05 — links/accent</p><p class="swatch__ratio">5.9:1 on white ✓</p></div>
+        <div class="swatch"><div class="swatch__chip swatch__chip--brand"></div><p class="swatch__name">Original Orange</p><p class="swatch__hex">#F37121 — fills only</p><p class="swatch__ratio">Never as text on light bg</p></div>
+        <div class="swatch"><div class="swatch__chip swatch__chip--peach"></div><p class="swatch__name">Peach</p><p class="swatch__hex">#FBCDB1 — soft bands</p><p class="swatch__ratio">10.1:1 w/ Shadow Black ✓</p></div>
+        <div class="swatch"><div class="swatch__chip swatch__chip--wink"></div><p class="swatch__name">Wink</p><p class="swatch__hex">#5E7AC3 — focus only</p><p class="swatch__ratio">3.88:1 on white (non-text) ✓</p></div>
+        <div class="swatch"><div class="swatch__chip swatch__chip--border"></div><p class="swatch__name">Border</p><p class="swatch__hex">#767676</p><p class="swatch__ratio">4.54:1 on white ✓</p></div>
       </div>
     </div>
   </div>
@@ -108,13 +108,13 @@ const SAMPLE_FEATURES = [
     </div>
 
     <div class="mod-variant-label">Dark background</div>
-    <div class="mod-demo mod-demo--tinted mod-demo--row" style="background:var(--color-dark)">
+    <div class="mod-demo mod-demo--tinted mod-demo--row mod-demo--dark">
       <a href="#" class="btn btn--onDark">On Dark</a>
       <a href="#" class="btn btn--onDark btn--lg">On Dark Large</a>
     </div>
 
     <div class="mod-variant-label">Brand (Original Orange) background</div>
-    <div class="mod-demo mod-demo--tinted mod-demo--row" style="background:var(--color-brand)">
+    <div class="mod-demo mod-demo--tinted mod-demo--row mod-demo--brand">
       <a href="#" class="btn btn--onBrand">On Brand</a>
       <a href="#" class="btn btn--onBrand btn--lg">On Brand Large</a>
     </div>
@@ -134,7 +134,7 @@ const SAMPLE_FEATURES = [
       <Hero
         headingLevel="h2"
         eyebrow="Eye Spy Foundation"
-        heading="Navigate. Discover. Find. Connect."
+        heading="Navigate. Discover. Find. Connect. (Light)"
         body="We use technology and community-driven support to help blind and low vision people navigate toward a more informed, connected, and confident life."
         primaryCta={{ label: 'Get Started', href: '/programs/' }}
         secondaryCta={{ label: 'Learn More', href: '/about/' }}
@@ -149,7 +149,7 @@ const SAMPLE_FEATURES = [
       <Hero
         headingLevel="h2"
         eyebrow="Eye Spy Foundation"
-        heading="Navigate. Discover. Find. Connect."
+        heading="Navigate. Discover. Find. Connect. (Dark)"
         body="We use technology and community-driven support to help blind and low vision people navigate toward a more informed, connected, and confident life."
         primaryCta={{ label: 'Get Started', href: '/programs/' }}
         secondaryCta={{ label: 'Learn More', href: '/about/' }}
@@ -162,7 +162,7 @@ const SAMPLE_FEATURES = [
       <Hero
         headingLevel="h2"
         eyebrow="Eye Spy Foundation"
-        heading="Navigate. Discover. Find. Connect."
+        heading="Navigate. Discover. Find. Connect. (Brand)"
         body="We use technology and community-driven support to help blind and low vision people navigate toward a more informed, connected, and confident life."
         primaryCta={{ label: 'Get Started', href: '/programs/' }}
         secondaryCta={{ label: 'Learn More', href: '/about/' }}
@@ -178,7 +178,7 @@ const SAMPLE_FEATURES = [
       <Hero
         headingLevel="h2"
         eyebrow="Eye Spy Foundation"
-        heading="Navigate. Discover. Find. Connect."
+        heading="Navigate. Discover. Find. Connect. (Background Image)"
         body="We use technology and community-driven support to help blind and low vision people navigate toward a more informed, connected, and confident life."
         primaryCta={{ label: 'Get Started', href: '/programs/' }}
         secondaryCta={{ label: 'Learn More', href: '/about/' }}
@@ -272,7 +272,7 @@ const SAMPLE_FEATURES = [
     </div>
 
     <div class="mod-variant-label">3 columns — dark band</div>
-    <div class="mod-demo mod-demo--tinted" style="background:var(--color-dark)">
+    <div class="mod-demo mod-demo--tinted mod-demo--dark">
       <FeatureGrid
         eyebrow="What We Do"
         features={SAMPLE_FEATURES}
@@ -321,16 +321,16 @@ const SAMPLE_FEATURES = [
     <div class="mod-demo mod-demo--pad">
       <ImpactMetrics
         eyebrow="Our Impact"
-        heading="Real people. Real change."
+        heading="Real people. Real change. (Light)"
         metrics={SAMPLE_METRICS}
       />
     </div>
 
     <div class="mod-variant-label">Dark band</div>
-    <div class="mod-demo mod-demo--tinted" style="background:var(--color-dark);color:#fff">
+    <div class="mod-demo mod-demo--tinted mod-demo--dark">
       <ImpactMetrics
         eyebrow="Our Impact"
-        heading="Real people. Real change."
+        heading="Real people. Real change. (Dark)"
         metrics={SAMPLE_METRICS}
       />
     </div>
@@ -468,6 +468,8 @@ const SAMPLE_FEATURES = [
     gap: var(--space-s);
     align-items: center;
   }
+  .mod-demo--dark { background: var(--color-dark); color: #ffffff; }
+  .mod-demo--brand { background: var(--color-brand); }
 
   /* ── Color swatches ── */
   .color-swatches {
@@ -480,10 +482,33 @@ const SAMPLE_FEATURES = [
     border-radius: var(--radius-sm);
     margin-bottom: 0.5rem;
   }
+  .swatch__chip--white { background: #FFFFFF; border: 2px solid #e0e0e0; }
+  .swatch__chip--grey { background: #F2F2F2; border: 2px solid #e0e0e0; }
+  .swatch__chip--black { background: #222222; }
+  .swatch__chip--accent { background: #A83A05; }
+  .swatch__chip--brand { background: #F37121; }
+  .swatch__chip--peach { background: #FBCDB1; border: 2px solid #e0e0e0; }
+  .swatch__chip--wink { background: #5E7AC3; }
+  .swatch__chip--border { background: #767676; }
   .swatch__name { font-weight: 700; font-size: 0.85rem; margin: 0 0 0.1rem; }
   .swatch__hex { font-size: 0.75rem; color: var(--color-text-muted); margin: 0 0 0.1rem; font-family: monospace; }
   .swatch__ratio { font-size: 0.7rem; color: var(--color-accent); margin: 0; font-weight: 600; }
 
   /* ── Lead text (reused from global, scoped here for modules page body) ── */
   .lead { font-size: var(--step-1); }
+
+  /* ── Type-scale demo (non-heading elements styled to match h1/h2/h3) ── */
+  .demo-type {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-display);
+    line-height: 1.1;
+    text-wrap: balance;
+    color: var(--color-text);
+  }
+  .demo-type--h1 { margin-top: 0; font-size: var(--step-3); letter-spacing: -0.01em; }
+  .demo-type--h2 { font-size: var(--step-2); }
+  .demo-type--h3 { font-size: var(--step-1); }
+  .demo-type--lead { margin: 1rem 0 0; }
+  .demo-type--body { margin: 0.75rem 0 0; }
+  .demo-type--muted { margin: 0.5rem 0 0; color: var(--color-text-muted); }
 </style>
