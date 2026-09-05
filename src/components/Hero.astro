@@ -84,12 +84,13 @@ const sectionClass = bgImage
 
 <section
   class={sectionClass}
+  aria-labelledby="hero-heading"
   {...bgImage ? { style: `background-image:url('${bgImage}')` } : {}}
 >
   <div class={`container${hasImage && !bgImage ? ' hero-section__grid' : ''}`}>
     <div class="hero-section__copy">
       {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-      <H class="hero-section__heading">{heading}</H>
+      <H id="hero-heading" class="hero-section__heading">{heading}</H>
       {body && <p class="lead">{body}</p>}
       {(primaryCta || secondaryCta) && (
         <div class="hero-section__ctas">
