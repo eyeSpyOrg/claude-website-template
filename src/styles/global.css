@@ -27,7 +27,7 @@
   --color-surface:      #F2F2F2;              /* Ghost Grey — cards, panels */
   --color-text:         #222222;              /* Shadow Black — 16.1:1 on white */
   --color-text-muted:   rgba(34,34,34,0.65); /* ~5.3:1 composite on white; verify on Ghost Grey before launch */
-  --color-accent:       #A83A05;              /* Burned Orange — 5.9:1 on white — links, small accents, buttons */
+  --color-accent:       #933001;              /* Burned Orange (dark) — 8.1:1 on white, 5.5:1 on teal-tint — links, small accents, buttons */
   --color-accent-hover: #7D2B04;              /* Darkened Burned Orange — 9.6:1 on white */
   --color-brand:        #F37121;              /* Original Orange — fills/backgrounds ONLY; never text on light bg (2.9:1) */
   --color-brand-soft:   #FBCDB1;              /* Peach — section/card backgrounds; 10.1:1 with Shadow Black */
