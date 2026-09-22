@@ -37,7 +37,7 @@ const headingId = heading ? uniqueId('im-heading') : undefined;
       {heading && <h2 id={headingId}>{heading}</h2>}
     </div>
   )}
-  <ul class={`im-grid im-grid--${Math.min(metrics.length, 4)}`}>
+  <ul class={`im-grid im-grid--${Math.min(metrics.length, 4)}`} role="list">
     {metrics.map((m) => (
       <li class="im-card">
         {m.icon && <span class="im-card__icon" aria-hidden="true">{m.icon}</span>}

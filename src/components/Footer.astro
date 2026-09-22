@@ -38,7 +38,7 @@ const ICONS: Record<string, string> = {
     </div>
 
     <nav aria-label="Footer">
-      <ul>
+      <ul role="list">
         {SITE.footerNav.map((item) => (
           <li><a href={item.href}>{item.label}</a></li>
         ))}
@@ -48,7 +48,7 @@ const ICONS: Record<string, string> = {
     {SITE.socials.length > 0 && (
       <nav class="site-footer__social" aria-label="Eye Spy Foundation on social media">
         <p class="site-footer__social-head">Follow @eyespyorg</p>
-        <ul>
+        <ul role="list">
           {SITE.socials.map((s) => (
             <li>
               <a class="social-icon" href={s.url} rel="me noopener" aria-label={`${s.label} (opens Eye Spy Foundation profile)`}>

@@ -436,3 +436,42 @@ html[data-a11y-contrast='high'] .accent-divider { background: var(--color-border
 
 /* ── Media defaults ───────────────────────────────────────── */
 img, video { max-width: 100%; height: auto; }
+
+/* ── Windows High Contrast Mode (forced-colors) ───────────────
+   When forced-colors is active, the OS replaces all CSS colors
+   with a system palette. Custom properties resolve to
+   transparent/initial, breaking any component that relies on
+   them for visibility. This block restores the minimum needed.
+   ──────────────────────────────────────────────────────────── */
+@media (forced-colors: active) {
+  /* Focus ring: use the OS Highlight color instead of our token */
+  :focus-visible {
+    outline-color: Highlight;
+  }
+
+  /* Skip link: keep it perceptible using system button colors */
+  .skip-link {
+    forced-color-adjust: none;
+    background: ButtonText;
+    color: ButtonFace;
+  }
+
+  /* Accessibility bar toggle: preserve shape and visibility */
+  .a11y-bar__toggle {
+    forced-color-adjust: none;
+    background: ButtonText;
+    color: ButtonFace;
+    border-color: ButtonFace;
+  }
+
+  /* Buttons: ensure border remains for shape perception when bg is overridden */
+  .btn {
+    border-color: ButtonText;
+  }
+
+  /* Hide purely decorative elements that carry no information */
+  .pattern-strip,
+  .accent-divider {
+    display: none;
+  }
+}
