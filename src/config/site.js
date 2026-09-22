@@ -15,6 +15,7 @@ export const SITE = {
     'Eye Spy Foundation helps blind and low vision people navigate toward a more informed, connected, and confident life — free navigation support, community events, and a curated resource directory.',
   locale: 'en_US',
   language: 'en',
+  dir: 'ltr',
 
   // ── Organization schema (schema.org/Organization) ─────────
   orgType: 'NGO',

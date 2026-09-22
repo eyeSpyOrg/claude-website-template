@@ -114,7 +114,7 @@ html[data-a11y-motion='off'] *::after {
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
-html[data-a11y-links='underline'] main a { text-decoration: underline !important; }
+html[data-a11y-links='underline'] a { text-decoration: underline !important; }
 /* Dyslexia-friendly font: Verdana has distinct letterforms that reduce character confusion.
    Upgrade: npm install @fontsource/atkinson-hyperlegible, import it in global.css, then
    set --font-body here to 'Atkinson Hyperlegible' for a purpose-built dyslexia font. */
@@ -151,7 +151,7 @@ main { display: block; }
 }
 .container--narrow { max-width: 54rem; }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   line-height: 1.1;
   text-wrap: balance;
@@ -160,6 +160,9 @@ h1, h2, h3, h4 {
 h1 { font-size: var(--step-3); letter-spacing: -0.01em; }
 h2 { font-size: var(--step-2); }
 h3 { font-size: var(--step-1); }
+h4 { font-size: var(--step-0); }
+h5 { font-size: 0.9rem; }
+h6 { font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; }
 
 /* ── Vertical rhythm: predictable, generous spacing ─────────
    Sections breathe; nothing is cramped. Uses the spacing scale. */
