@@ -12,7 +12,7 @@ const { items } = Astro.props;
 ---
 
 <nav aria-label="Breadcrumb" class="breadcrumbs">
-  <ol role="list">
+  <ol>
     {items.map((item, i) => (
       <li>
         {i < items.length - 1 ? (

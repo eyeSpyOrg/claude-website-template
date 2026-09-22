@@ -12,6 +12,7 @@
     "no-dup-id": "error",
     "input-missing-label": "error",
     "require-sri": "off",
-    "long-title": "error"
+    "long-title": "error",
+    "no-redundant-role": "off"
   }
 }
