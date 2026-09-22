@@ -12,6 +12,7 @@ import { SITE } from '../config/site.js';
 const enabled = Boolean(SITE.integrations?.ga4Id || SITE.integrations?.hubspotPortalId);
 ---
 
+{enabled && <div role="status" class="sr-only" data-consent-status></div>}
 {enabled && (
   <section
     class="consent"
@@ -80,8 +81,11 @@ const enabled = Boolean(SITE.integrations?.ga4Id || SITE.integrations?.hubspotPo
   }
 
   if (banner) {
-    // Show only if no prior choice
-    if (!localStorage.getItem(KEY)) banner.hidden = false;
+    const statusEl = document.querySelector<HTMLElement>('[data-consent-status]');
+    if (!localStorage.getItem(KEY)) {
+      banner.hidden = false;
+      if (statusEl) statusEl.textContent = 'Cookie consent options are available. You can accept or decline analytics.';
+    }
 
     banner.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach((btn) => {
       btn.addEventListener('click', () =>

@@ -54,6 +54,7 @@
 
     <button type="button" class="a11y-bar__reset" data-a11y-reset>Reset all</button>
   </div>
+  <div role="status" class="sr-only" data-a11y-status></div>
 </div>
 
 <style>
@@ -160,6 +161,13 @@
     });
   }
 
+  function announce(message: string) {
+    const el = document.querySelector<HTMLElement>('[data-a11y-status]');
+    if (!el) return;
+    el.textContent = '';
+    requestAnimationFrame(() => { el.textContent = message; });
+  }
+
   function init() {
     const toggle = document.querySelector<HTMLButtonElement>('[data-a11y-toggle]');
     const panel = document.getElementById('a11y-panel');
@@ -182,17 +190,22 @@
     });
 
     document.querySelectorAll<HTMLButtonElement>('[data-a11y-set="fontsize"]').forEach((btn) => {
-      btn.addEventListener('click', () => apply('fontsize', btn.dataset.value ?? 'default'));
+      btn.addEventListener('click', () => {
+        apply('fontsize', btn.dataset.value ?? 'default');
+        announce(`Text size: ${btn.textContent?.trim()}`);
+      });
     });
     document.querySelectorAll<HTMLButtonElement>('[data-a11y-flag]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const key = btn.dataset.a11yFlag!;
         const isOn = root.hasAttribute(`data-a11y-${key}`);
         apply(key, isOn ? null : btn.dataset.on!);
+        announce(`${btn.textContent?.trim()} ${isOn ? 'disabled' : 'enabled'}`);
       });
     });
     document.querySelector('[data-a11y-reset]')?.addEventListener('click', () => {
       PREF_KEYS.forEach((k) => apply(k, null));
+      announce('All accessibility preferences reset');
     });
 
     syncButtons();

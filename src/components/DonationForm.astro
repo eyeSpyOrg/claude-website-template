@@ -51,8 +51,8 @@ const formId = 'donation-form';
 
   {allowRecurring && (
     <div class="df-toggle" role="group" aria-label="Donation frequency">
-      <button class="df-toggle__btn df-toggle__btn--active" data-freq="one-time" type="button">One-time</button>
-      <button class="df-toggle__btn" data-freq="monthly" type="button">Monthly</button>
+      <button class="df-toggle__btn df-toggle__btn--active" data-freq="one-time" type="button" aria-pressed="true">One-time</button>
+      <button class="df-toggle__btn" data-freq="monthly" type="button" aria-pressed="false">Monthly</button>
     </div>
   )}
 
@@ -198,7 +198,7 @@ const formId = 'donation-form';
     min-height: 44px;
     width: 100%;
   }
-  .df-custom-input input:focus { outline: none; }
+  .df-custom-input__row:focus-within input:focus { outline: none; }
   .df-custom-input__row:focus-within {
     border-color: var(--color-accent);
     outline: 2px solid var(--color-focus);
@@ -243,10 +243,18 @@ const formId = 'donation-form';
     const freqBtns = form.querySelectorAll<HTMLButtonElement>('[data-freq]');
     let freq = 'one-time';
 
+    cta.addEventListener('click', (e) => {
+      if (cta.getAttribute('aria-disabled') === 'true') e.preventDefault();
+    });
+
     freqBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
-        freqBtns.forEach((b) => b.classList.remove('df-toggle__btn--active'));
+        freqBtns.forEach((b) => {
+          b.classList.remove('df-toggle__btn--active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('df-toggle__btn--active');
+        btn.setAttribute('aria-pressed', 'true');
         freq = btn.dataset.freq ?? 'one-time';
       });
     });
