@@ -102,6 +102,9 @@ const videos: { videoId: string; title: string; description?: string }[] = [
   title="Support Eye Spy Foundation"
   description="Your gift funds free navigation support, workshops, and peer mentorship for the blind and low vision community. 100% of donations support programs. Give today."
 >
+  <div class="container">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Support', href: '/support/' }]} />
+  </div>
   <!-- Hero -->
   <Hero
     eyebrow="Make an Impact"
