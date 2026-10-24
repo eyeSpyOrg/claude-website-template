@@ -11,6 +11,11 @@ import JsonLd from './JsonLd.astro';
 const orgId = `${SITE.url}/#organization`;
 const siteId = `${SITE.url}/#website`;
 
+const isPlaceholder = (s: string) => s.includes('[');
+const hasRealAddress =
+  !isPlaceholder(SITE.address.streetAddress) &&
+  !isPlaceholder(SITE.address.postalCode);
+
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -27,10 +32,9 @@ const schema = {
       foundingDate: SITE.foundingDate,
       email: SITE.email,
       telephone: SITE.telephone,
-      address: {
-        '@type': 'PostalAddress',
-        ...SITE.address,
-      },
+      ...(hasRealAddress && {
+        address: { '@type': 'PostalAddress', ...SITE.address },
+      }),
       ...(SITE.socials.length > 0 && { sameAs: SITE.socials.map((s) => s.url) }),
     },
     {

@@ -13,6 +13,7 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import DonationForm from '../../components/DonationForm.astro';
 import ImpactMetrics from '../../components/ImpactMetrics.astro';
 import Testimonial from '../../components/Testimonial.astro';
@@ -20,6 +21,7 @@ import VideoGallery from '../../components/VideoGallery.astro';
 import ComplianceBadge from '../../components/ComplianceBadge.astro';
 import FAQ from '../../components/FAQ.astro';
 import { SITE } from '../../config/site.js';
+import { LEGAL } from '../../config/legal.ts';
 
 // Replace with real Stripe Payment Link URLs from your Stripe Dashboard.
 // Test links use https://buy.stripe.com/test_... format.
@@ -50,7 +52,7 @@ const metrics = [
 const donationFaqs = [
   {
     question: 'Is my donation tax-deductible?',
-    answer: `Yes. Eye Spy Foundation is a registered 501(c)(3) nonprofit organization (EIN: [PLACEHOLDER]). Your donation is tax-deductible to the fullest extent permitted by law. You will receive a receipt email with tax documentation.`,
+    answer: `Yes. Eye Spy Foundation is a registered 501(c)(3) nonprofit organization${LEGAL.ein ? ` (EIN: ${LEGAL.ein})` : ''}. Your donation is tax-deductible to the fullest extent permitted by law. You will receive a receipt email with tax documentation.`,
   },
   {
     question: 'How is my donation used?',
@@ -62,7 +64,7 @@ const donationFaqs = [
   },
   {
     question: 'What if I have questions about my donation?',
-    answer: `Email us at ${SITE.email} or call [PLACEHOLDER]. We are happy to discuss how your gift supports our mission.`,
+    answer: `Email us at ${SITE.email} or call us at ${SITE.telephone}. We are happy to discuss how your gift supports our mission.`,
   },
   {
     question: 'Do you accept other payment methods?',

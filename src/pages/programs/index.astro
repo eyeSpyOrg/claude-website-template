@@ -8,6 +8,7 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Card from '../../components/Card.astro';
 import ImpactMetrics from '../../components/ImpactMetrics.astro';
 import StorySection from '../../components/StorySection.astro';
@@ -67,6 +68,9 @@ const faqs = [
   title="Our Programs"
   description="Free programs for the blind and low vision community: resource navigation, community workshops, and peer mentorship. No cost, no waitlist — just real help."
 >
+  <div class="container">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Programs', href: '/programs/' }]} />
+  </div>
   <!-- Hero -->
   <Hero
     eyebrow="What We Do"

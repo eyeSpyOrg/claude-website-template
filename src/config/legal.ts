@@ -8,7 +8,7 @@ import { SITE } from './site.js';
 
 export const LEGAL = {
   orgName: (SITE as any).legalName ?? SITE.name,
-  ein: (SITE as any).ein ?? '[EIN PLACEHOLDER — set in LEGAL_BRAIN.md]',
+  ein: (SITE as any).ein ?? '',
   email: SITE.email,
   address: SITE.address,
   telephone: SITE.telephone,

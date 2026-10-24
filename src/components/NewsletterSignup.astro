@@ -13,6 +13,7 @@
  */
 
 import HubSpotForm from './HubSpotForm.astro';
+import { uniqueId } from '../utils/uniqueId';
 
 interface Props {
   formGuid?: string;
@@ -26,12 +27,13 @@ const {
   description = 'Receive impact stories, event updates, and ways you can help. Unsubscribe anytime.',
   compact = false,
 } = Astro.props;
+const nsHeadingId = uniqueId('ns-heading');
 ---
 
-<section class={`newsletter-signup${compact ? ' newsletter-signup--compact' : ''}`} aria-labelledby="ns-heading">
+<section class={`newsletter-signup${compact ? ' newsletter-signup--compact' : ''}`} aria-labelledby={nsHeadingId}>
   {!compact && (
     <div class="newsletter-signup__head">
-      <h2 id="ns-heading">{heading}</h2>
+      <h2 id={nsHeadingId}>{heading}</h2>
       {description && <p class="prose">{description}</p>}
     </div>
   )}

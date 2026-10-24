@@ -6,6 +6,7 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import DocumentsGrid from '../../components/DocumentsGrid.astro';
 import ComplianceBadge from '../../components/ComplianceBadge.astro';
 import { SITE } from '../../config/site.js';
@@ -69,6 +70,9 @@ const docs = [
   title="Documents & Transparency"
   description={`Financial transparency for ${(SITE as any).legalName ?? SITE.name}. Download annual reports, Form 990, audit reports, and press materials.`}
 >
+  <div class="container">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Documents', href: '/documents/' }]} />
+  </div>
   <Hero
     eyebrow="Full Transparency"
     heading="Our Commitment to Openness"

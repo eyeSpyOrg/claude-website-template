@@ -7,6 +7,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { SITE } from '../config/site.js';
+import { LEGAL } from '../config/legal.ts';
 ---
 
 <BaseLayout
@@ -48,7 +49,7 @@ import { SITE } from '../config/site.js';
         within two business days.
       </p>
 
-      <p><em>Last updated: [PLACEHOLDER: date].</em></p>
+      <p><em>Last updated: {LEGAL.privacyLastUpdated}.</em></p>
     </div>
   </div>
 </BaseLayout>

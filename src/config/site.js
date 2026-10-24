@@ -23,6 +23,7 @@ export const SITE = {
   foundingDate: '2023',
   email: 'team@eyespy.org',
   telephone: '+1-844-222-8848',
+  ein: '',  // Set after IRS determination, e.g. '12-3456789'
   address: {
     streetAddress: '[PLACEHOLDER: Street Address]',
     addressLocality: 'Jacksonville',

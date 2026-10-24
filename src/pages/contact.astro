@@ -6,6 +6,7 @@
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQ from '../components/FAQ.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { SITE } from '../config/site.js';
 
 const telDisplay = '(844) 222‑8848';
@@ -35,9 +36,12 @@ const contactFaqs = [
 ---
 
 <BaseLayout
-  title="Contact"
+  title="Contact Eye Spy Foundation"
   description="Contact Eye Spy Foundation at team@eyespy.org or (844) 222-8848. We help the blind and low vision community navigate resources — we greet everyone with a hug or a handshake."
 >
+  <div class="container">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Contact', href: '/contact/' }]} />
+  </div>
   <section class="band band--teal band--tight">
     <div class="container container--narrow">
       <div class="section-head">

@@ -1,0 +1,17 @@
+{
+  "name": "Eye Spy Foundation",
+  "short_name": "Eye Spy",
+  "description": "Helping blind and low vision people navigate toward a more informed, connected, and confident life.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F37121",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

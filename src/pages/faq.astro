@@ -6,6 +6,7 @@
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQ from '../components/FAQ.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { SITE } from '../config/site.js';
 
 const faqs = [
@@ -63,9 +64,12 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="FAQ"
+  title="Frequently Asked Questions"
   description="Eye Spy Foundation FAQ: who we serve, how our programs work, how donations are used, and how to get involved with the blind and low vision community."
 >
+  <div class="container">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'FAQ', href: '/faq/' }]} />
+  </div>
   <section class="band band--teal band--tight">
     <div class="container container--narrow">
       <div class="section-head">
